@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+ <!-- 确保Spring的自动装配策略总是被考虑 -->
+<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+<constant name="struts.devMode" value="true" />
+<!-- 防止过滤器过滤掉dwr -->
+<constant name="struts.action.excludePattern" value="/dwr.*" />
+<package name="loginAction" namespace="/" extends="struts-default" >
+		<interceptors>
+			<!-- 登录验证拦截器 -->
+			<interceptor name="authority" class="com.iotNM.interceptor" />
+			<interceptor-stack name="myDefult">
+				<!-- 将登录验证拦截器加入默认的拦截器栈中 -->
+				<interceptor-ref name="authority">
+					<param name="excludeMethods">login</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+    <!-- 定义处理请求URL为login.action的Action -->
+        <action name="login" class="com.iotNM.action.loginAction">
+        <!-- 定义处理结果字符串和资源之间的映射关系 -->
+            <result name="success">/WEB-INF/index.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+         <action name="dirService" class="com.iotNM.action.dirServiceAction">
+        <!-- 定义处理结果字符串和资源之间的映射关系 -->
+            <result name="success">/WEB-INF/index.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+           <action name="mapAction" class="com.iotNM.action.mapAction">
+        <!-- 定义处理结果字符串和资源之间的映射关系 -->
+            <result name="success">/WEB-INF/index.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+    </package>
+</struts>    

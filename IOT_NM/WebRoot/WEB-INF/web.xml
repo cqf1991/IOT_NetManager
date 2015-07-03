@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name>WSN</display-name>	
+ <!--DWR Servlet config -->
+	<servlet>
+		<!-- Dwr2.0之后配置前端拦截器由uk.ltd.getahead.dwr.DWRServlet换为了org.directwebremoting.servlet.DwrServlet -->
+		<servlet-name>dwr-invoker</servlet-name>
+		<servlet-class>org.directwebremoting.spring.DwrSpringServlet</servlet-class>
+		 <!-- DWR默认采用piggyback方式 -->  	     
+    	<!-- 使用polling和comet的方式 -->  
+    	<init-param>  
+        	<param-name>pollAndCometEnabled</param-name>  
+       	 <param-value>true</param-value>  
+   		 </init-param>      
+	    <!-- comet方式 -->       
+   		 <init-param>  
+    	    <param-name>activeReverseAjaxEnabled</param-name>  
+     	   <param-value>true</param-value>  
+  		  </init-param>  
+		<init-param>
+		<!-- 这个是调试用，如果正式发布请该为false -->
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+  
+  
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+ 
+    <!-- 配置资源 -->
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>classpath*:applicationContext.xml</param-value>
+  </context-param>
+  <!-- Spring 刷新Introspector防止内存泄露 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+  <!-- 配置CharacterEncoding，设置字符集 -->
+  <filter>
+  	<filter-name>characterEncodingFilter</filter-name>
+  	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  	<init-param>
+  	  <param-name>encoding</param-name>
+  	  <param-value>UTF-8</param-value>
+  	</init-param>
+  	<init-param>
+  	  <param-name>forceEncoding</param-name>
+  	  <param-value>true</param-value>
+  	</init-param>
+  </filter>
+
+  <filter-mapping>
+  	<filter-name>characterEncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+   <!-- 将HibernateSession开关控制配置在Filter，保证一个请求一个session，并对lazy提供支持 -->
+  <filter>
+  	<filter-name>hibernateFilter</filter-name>
+  	<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+  	<init-param>
+  	  <param-name>singleSession</param-name>
+  	  <param-value>true</param-value>
+  	</init-param>
+  </filter>
+
+  <filter-mapping>
+  	<filter-name>hibernateFilter</filter-name>
+  	<url-pattern>*.do</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+  	<filter-name>struts2</filter-name>
+  	<filter-class>
+  		org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
+  	</filter-class>
+ 
+  </filter>
+  <filter-mapping>
+  	<filter-name>struts2</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+    <!-- 配置spring classpath*:applicationContext.xml -->
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <!-- 页面session配置 -->
+  <session-config>
+  	<session-timeout>20</session-timeout>
+  </session-config>
+  
+
+  <!-- 出错页面定义 -->
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/common/500.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/common/500.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/common/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/common/403.jsp</location>
+    </error-page>
+   
+  
+  
+  
+  </web-app>
