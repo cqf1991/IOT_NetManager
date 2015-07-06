@@ -330,7 +330,7 @@ function updateGridData(str) {//str为传入的单个网络/子网/节点,暂时
 	
 	function GridNet(net){
 		var gridHandle = Ext.getCmp('Rigthgrid');	
-		myTitle = "网络名称：" + str.NTID+"号网络";
+		myTitle = "网络名称：" + net.NTID+"号网络";
 		if(net.SUBNETSIZE==null)
 		size='0';
 		else
@@ -408,41 +408,61 @@ function updateGridData(str) {//str为传入的单个网络/子网/节点,暂时
 	switch(depth)
 		{
 			case 1: 
-			if(16!=Map.getZoom())
 			
+			var opts = {
+			width:240,
+			height:120,
+			title:"       网络基本信息",
+		
+				}
+			var info = new BMap.InfoWindow("网络ID:  "+net[index].NTID+"<br>"+
+			"网络描述："+net[index].NTDSCRPT+"<br>"+"经纬度:"+net[index].CVRG_LB_X+","+net[index].CVRG_LB_Y+"<br>"+"子网数量:"+(net[index].SUBNETSIZE?net[index].SUBNETSIZE:0),opts);
+			
+			if(16!=Map.getZoom())
 			Map.setZoom(18);
 			
 			location= new BMap.Point(net[index].CVRG_LB_Y,net[index].CVRG_LB_X);
 			Map.panTo(location);
 			GridNet(net[index]);
+			Map.openInfoWindow(info,location);
+			//setTimeout(function(){Map.closeInfoWindow(info,location)},3000);	
 			break;
 			
-			case 2: 
+			case 2: 	
+			netIndex=rcd.parentNode.data.index;
+			var opts = {
+			width:240,
+			height:150,
+			title:"       子网基本信息",
+		
+			};
+			var info = new BMap.InfoWindow("子网ID:  "+net[netIndex].SUBNET[index].SBNTID[0]+"<br>"+"子网名称："+net[netIndex].SUBNET[index].NTNM[0]+"<br>"+
+			"节点数量："+net[netIndex].SUBNET[index].childNodes.length+"<br>"+"子网描述："+net[netIndex].SUBNET[index].DSPT[0]+"<br>"+"经纬度:"+net[netIndex].SUBNET[index].CVRG_LB_X[0]+","+net[netIndex].SUBNET[index].CVRG_LB_Y[0],opts);
 			if(17!=Map.getZoom())
 			Map.setZoom(17);
-		    netIndex=rcd.parentNode.data.Index;
+			
 			location= new BMap.Point(net[netIndex].SUBNET[index].CVRG_LB_Y,net[netIndex].SUBNET[index].CVRG_LB_X);
 			Map.panTo(location);
-			
+			Map.openInfoWindow(netInfo(depth),location);
 			GridSubnet(net[netIndex].SUBNET[index]);
+			//setTimeout(function(){Map.closeInfoWindow(info,location)},3000);	
 			break;
 			case 3: 
 			if(18!=Map.getZoom())
-			Map.setZoom(18);
+				Map.setZoom(18);
 			 netIndex=rcd.parentNode.parentNode.data.index;
 			 subIndex=rcd.parentNode.data.index;
-		
+				Map.openInfoWindow(netInfo(depth),location);
 			location= new BMap.Point(net[netIndex].SUBNET[subIndex].NODE[index].LCTN_Y,net[netIndex].SUBNET[subIndex].NODE[index].LCTN_X);
 			Map.panTo(location);
 			GridNode(net[netIndex].SUBNET[subIndex].NODE[index]);
+			//setTimeout(function(){Map.closeInfoWindow(info,location)},3000);	
 			break;
 			case 4: break;
 			default: alert("网络结构发生变化，请通知管理员！");break;
 			
 		}
 	}
-
-          
 
 					
 					
