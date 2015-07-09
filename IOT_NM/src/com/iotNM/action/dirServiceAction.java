@@ -41,7 +41,7 @@ public class dirServiceAction extends ActionSupport {
 	
 		new Server(4031,"C:\\ClientDll.dll").start();
 		Client aclient=new Client();
-		aclient.sendDirMsg();
+		aclient.sendMsg(1);
 		
 		if(dirMsg!="")//第一次数据会出问题，第一次直接就是空 因为线程在运行  把client取消用线程实现试试
 		{
@@ -56,7 +56,7 @@ public class dirServiceAction extends ActionSupport {
 	{
 		new Server(4031,"C:\\ClientDll.dll").start();
 		Client aclient=new Client();
-		aclient.sendDirMsg();
+		aclient.sendMsg(1);
 		
 		if(dirMsg!="")//第一次数据会出问题，第一次直接就是空 因为线程在运行  把client取消用线程实现试试
 		{

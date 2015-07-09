@@ -20,18 +20,40 @@ public class Client{
 
 	}
 
-	public void sendDirMsg() {
+	public void sendMsg(int msgType) {
+		byte[] abyte;
+		OutputStream osOutputStream;
 		try {
+			switch (msgType) {
+			case 1://send dir msg
+				abyte = dirMessage();
+				osOutputStream = sk.getOutputStream();
+				osOutputStream.write(abyte);
+				break;
+			case 2://sent regnet msg
+				abyte = registNetMessage();
+				osOutputStream = sk.getOutputStream();
+				osOutputStream.write(abyte);
 
-			byte[] abyte = dirMessage();
-			OutputStream osOutputStream = sk.getOutputStream();
-			osOutputStream.write(abyte);
-
+			default:
+				break;
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
  	}
 
+//===================================================================================
+	private byte[] registNetMessage()
+	{
+		try {
+			return javaCallDll.JAVA_Register();
+		} catch (NativeException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	private byte[] dirMessage() {
 
 		try {
@@ -43,6 +65,6 @@ public class Client{
 	}
 
 	public static void main(String[] args) {
-		new Client().sendDirMsg();
+		new Client().sendMsg(2);
 	}
 }

@@ -17,8 +17,6 @@ import org.springframework.util.Assert;
  * 反射工具类.
  * 
  * 提供调用getter/setter方法, 访问私有变量, 调用私有方法, 获取泛型类型Class, 被AOP过的真实类等工具函数.
- * @author 尔演&Eryan eryanwcp@gmail.com
- * @date 2013-3-24 下午4:17:27 
  *
  */
 public class ReflectionUtils {

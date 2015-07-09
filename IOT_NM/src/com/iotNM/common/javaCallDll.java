@@ -37,44 +37,28 @@ public class javaCallDll {
         }
         
 	}
-	public static void JAVA_GetXMLData(byte[] msgFromDir,String filepath)
-	{
-		 JNative.setLoggingEnabled(true);  
-	        try {  
-	            JNative getUrl = new JNative(dllPath, "JAVA_GetXMLFile"); //创建 getUrl 方法的<span style="font-family: Arial, Helvetica, sans-serif;">JNative对象</span>  
-	            Pointer srcDataPointer=new Pointer(MemoryBlockFactory.createMemoryBlock(1024));
-	            Pointer filePathPointer=new Pointer(MemoryBlockFactory.createMemoryBlock(1024));
-	            filePathPointer.setMemory(filepath.getBytes());
-	            srcDataPointer.setMemory(msgFromDir);
-	            getUrl.setRetVal(Type.INT); //设置返回值类型为：String  
-	            getUrl.setParameter(0, srcDataPointer); //按顺序设置方法需要的参数值  
-	            getUrl.setParameter(1, filePathPointer);   
-	            getUrl.invoke(); //调用方法
-	            System.out.println(getUrl.getRetVal()); //输出返回值
-	        } catch (IllegalAccessException e) {  
-	            e.printStackTrace();  
-	        } catch (NativeException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        
-	}
 	
-	public static byte[] JAVA_GetSubScribeData()throws NativeException {
-		//TODO	获取数据包	  
+	public static byte[] JAVA_Register()throws NativeException {
+		  
         JNative.setLoggingEnabled(true);  
         try {  
-            JNative getUrl = new JNative(dllPath, "JAVA_GetDirData"); //创建 getUrl 方法的<span style="font-family: Arial, Helvetica, sans-serif;">JNative对象</span>  
+            JNative getUrl = new JNative("C:\\IOTRegServiceDll.dll", "NetRegMessageBuilder"); //创建 getUrl 方法的<span style="font-family: Arial, Helvetica, sans-serif;">JNative对象</span>  
             Pointer returnPointer=new Pointer(MemoryBlockFactory.createMemoryBlock(1024));
-            getUrl.setRetVal(Type.VOID); //设置返回值类型为：String  
-            getUrl.setParameter(0, 49); //按顺序设置方法需要的参数值  
-            getUrl.setParameter(1, 2);  
-            getUrl.setParameter(2, 6); 
-            getUrl.setParameter(3, -1);  
-            getUrl.setParameter(4, -1);  
-            getUrl.setParameter(5, -1);  
-            getUrl.setParameter(6, -1);  
-            getUrl.setParameter(7, returnPointer);   
+            getUrl.setRetVal(Type.INT); //设置返回值类型为：String  
+            getUrl.setParameter(0, "NETNAME"); //按顺序设置方法需要的参数值  
+            getUrl.setParameter(1, "strNetDescrption");  
+            getUrl.setParameter(2, "strAddress"); 
+            getUrl.setParameter(3, "strOrganUnit");  
+            getUrl.setParameter(4, "strRepUnit");  
+            getUrl.setParameter(5, "strLinkMan");  
+            getUrl.setParameter(6, "strPhone");  
+            getUrl.setParameter(7, "strMemo");  
+            getUrl.setParameter(8, Type.FLOAT, "1.5") ;
+            getUrl.setParameter(9,  Type.FLOAT, "1.5");  
+            getUrl.setParameter(10,  Type.FLOAT, "1.5");  
+            getUrl.setParameter(11,  Type.FLOAT, "1.5");  
+            getUrl.setParameter(12, 49);              
+            getUrl.setParameter(13, returnPointer);   
             getUrl.invoke(); //调用方法
             byte[] getBytes=returnPointer.getMemory();
             System.out.println(getUrl.getRetVal()); //输出返回值
@@ -85,9 +69,11 @@ public class javaCallDll {
         }
         
 	}
+	
+	
 	public static void main(String[] args) {
 		try {
-			javaCallDll.JAVA_GetDirData();
+			javaCallDll.JAVA_Register();
 		} catch (NativeException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

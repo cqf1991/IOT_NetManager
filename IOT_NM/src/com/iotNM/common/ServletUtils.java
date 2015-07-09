@@ -17,7 +17,6 @@ import com.iotNM.common.EncodeUtils;
 /**
  * Http与Servlet工具类.
  * 
- * @author 尔演&Eryan
  */
 public class ServletUtils {
 

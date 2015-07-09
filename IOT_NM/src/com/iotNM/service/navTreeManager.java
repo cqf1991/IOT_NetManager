@@ -17,7 +17,7 @@ import com.sun.xml.internal.bind.v2.TODO;
 @Service
 public class navTreeManager {
 
-	public String generateTree(String comMsg) {
+	public String generateTree(String comMsg) {//将xml转换为iot对象
 		try {  
             JAXBContext context = JAXBContext.newInstance(IOT_DIR.class);  
             Unmarshaller unmarshaller = context.createUnmarshaller();  
