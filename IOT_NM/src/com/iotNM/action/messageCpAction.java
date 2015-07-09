@@ -46,7 +46,7 @@ public class messageCpAction extends ActionSupport {
 	public void getDIR() throws NativeException, IOException
 	{
 
-		new Client().sendMsg(1);
+		new Client().sendMsg(1,null);
 	}
 	
 	@RemoteMethod

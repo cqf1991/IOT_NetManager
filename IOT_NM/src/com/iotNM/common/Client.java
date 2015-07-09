@@ -5,6 +5,11 @@ import java.net.Socket;
 
 import org.xvolks.jnative.exceptions.NativeException;
 
+import sun.security.krb5.internal.NetClient;
+
+import com.iotNM.entity.reg.NET;
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 
 public class Client{
 	Socket sk = null;
@@ -20,7 +25,12 @@ public class Client{
 
 	}
 
-	public void sendMsg(int msgType) {
+	/**
+	 * 向CIS发送请求
+	 * @param msgType  消息类型 1:目录消息  2:注册网络 3：注册子网 4:注册节点 5:注册传感器
+	 * @param msg	   具体的消息对象
+	 */
+	public void sendMsg(int msgType,Object msg) {
 		byte[] abyte;
 		OutputStream osOutputStream;
 		try {
@@ -31,7 +41,7 @@ public class Client{
 				osOutputStream.write(abyte);
 				break;
 			case 2://sent regnet msg
-				abyte = registNetMessage();
+				abyte = registNetMessage(msg);
 				osOutputStream = sk.getOutputStream();
 				osOutputStream.write(abyte);
 
@@ -45,10 +55,11 @@ public class Client{
  	}
 
 //===================================================================================
-	private byte[] registNetMessage()
+	private byte[] registNetMessage(Object msg)
 	{
 		try {
-			return javaCallDll.JAVA_Register();
+			NET aNetMsg=(NET)msg;
+			return javaCallDll.JAVA_Register(aNetMsg);
 		} catch (NativeException e) {
 			e.printStackTrace();
 			return null;
@@ -65,6 +76,7 @@ public class Client{
 	}
 
 	public static void main(String[] args) {
-		new Client().sendMsg(2);
+		NET anet=new NET("abc", "abc", "abc", "abc", "abc", "abc", "abc", "abc", 123, 323, 31, 32, 49);
+		new Client().sendMsg(2,anet);
 	}
 }

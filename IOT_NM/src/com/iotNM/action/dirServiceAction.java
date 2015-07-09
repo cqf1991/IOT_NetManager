@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.Null;
 
 import net.sf.json.util.JSONUtils;
 
@@ -41,7 +42,7 @@ public class dirServiceAction extends ActionSupport {
 	
 		new Server(4031,"C:\\ClientDll.dll").start();
 		Client aclient=new Client();
-		aclient.sendMsg(1);
+		aclient.sendMsg(1,null);
 		
 		if(dirMsg!="")//第一次数据会出问题，第一次直接就是空 因为线程在运行  把client取消用线程实现试试
 		{
@@ -56,7 +57,7 @@ public class dirServiceAction extends ActionSupport {
 	{
 		new Server(4031,"C:\\ClientDll.dll").start();
 		Client aclient=new Client();
-		aclient.sendMsg(1);
+		aclient.sendMsg(1,null);
 		
 		if(dirMsg!="")//第一次数据会出问题，第一次直接就是空 因为线程在运行  把client取消用线程实现试试
 		{
