@@ -53,4 +53,26 @@ public class byteConvert {
     	byte[] inputMsg={1, 0, 0, 0, }	;
     	bytesToInt(inputMsg, 0);
 	}
+  //字节到浮点转换  
+    public static double byteToDouble(byte[] b){  
+      long l;  
+    
+      l=b[0];  
+      l&=0xff;  
+      l|=((long)b[1]<<8);  
+      l&=0xffff;  
+      l|=((long)b[2]<<16);  
+      l&=0xffffff;  
+      l|=((long)b[3]<<24);  
+      l&=0xffffffffl;  
+      l|=((long)b[4]<<32);  
+      l&=0xffffffffffl;  
+    
+      l|=((long)b[5]<<40);  
+      l&=0xffffffffffffl;  
+      l|=((long)b[6]<<48);  
+    
+      l|=((long)b[7]<<56);  
+      return Double.longBitsToDouble(l);  
+    }  
 }

@@ -16,7 +16,13 @@ public class packageBody {
 	public packageBody(byte[] packagebody) {
 		valueSize=byteConvert.bytesToShort(packagebody, 0);
 		keyName=new String(Arrays.copyOfRange(packagebody, 2, 12)).trim();	
-		keyValue=new String(Arrays.copyOfRange(packagebody, 12, packagebody.length)).trim();
+		byte[] doublesub=Arrays.copyOfRange(packagebody, 12, packagebody.length);
+		if (doublesub.length==2)
+				{
+					System.out.println(byteConvert.bytesToShort(doublesub, 0));
+				}
+//		keyValue=new String(String.valueOf(byteConvert.byteToDouble(doublesub)));
+		keyValue=new String(Arrays.copyOfRange(packagebody, 12, packagebody.length));
 	}
 	public short getValueSize() {
 		return valueSize;

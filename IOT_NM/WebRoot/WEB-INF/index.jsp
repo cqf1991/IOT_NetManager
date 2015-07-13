@@ -57,10 +57,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	function onPageLoad(){
 		
-		initMap(Nets); 
+		//initMap(Nets); 
+		messagePush.messageCP(4031);
 	  	
 	  }
-
+function notload(){
 	  Ext.Ajax.request({
 	 	    url: 'dirService!getDIR',
 	 	    success: function(response){
@@ -104,22 +105,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		 //messagePush.messageCP(4031);//当getString从服务器取回数据后的回调函数,data为返回的值);//端口号为参数  待完善
 		 //messagePush.getDIR();
-
+}
 	
 	 //推送信息
 	 function testDWR(msg)
-	 {
-
-		   
+	 {		   
 		 alert(msg);
-		 var navStore  = Ext.create('Ext.data.TreeStore', {
-			    root: {
-			        expanded: true,
-			        children: msg
-			    }
-			});
-		
-
 	 }
 	 function showMessage(autoMessage){
 		 
@@ -311,13 +302,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	            //closeAction: 'hide',
 	    	            closable: true
 	                });
-	            	Ext.getCmp("subscribeTab").body.update('<iframe scrolling="auto"  frameborder="0" width="100%" height="100%" src="IOTNM_Pages/NetReg.jsp"></iframe>  ');
+	            	Ext.getCmp("subscribeTab").body.update('<iframe scrolling="auto"  frameborder="0" width="100%" height="100%" src="login.action"></iframe>  ');
 	            	centerPanel.setActiveTab("subscribeTab");
 	            	
             	}
             	else
             	{
-            		Ext.getCmp("subscribeTab").body.update('<iframe scrolling="auto"  frameborder="0" width="100%" height="100%" src="IOTNM_Pages/NetReg.jsp"></iframe>  ');
+            		Ext.getCmp("subscribeTab").body.update('<iframe scrolling="auto"  frameborder="0" width="100%" height="100%" src="login.action"></iframe>  ');
 	            	centerPanel.setActiveTab("subscribeTab");
             	}
             }
@@ -598,14 +589,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <p>Hi. I'm the west panel.</p>
     </div>
     <div id="center1" class="x-hide-display">
-   		 <iframe src="IOTNM_Pages/NetReg.jsp" width="100%" height="100%"> </iframe>
+   		 <iframe src="Reg.jsp" width="100%" height="100%"> </iframe>
     </div>
     <%--
     <div id="center5" class="x-hide-display">
    		 <script type="text/javascript">
    		     //var netId = Nets[currentNet].netID;
    		     //alert(netId);
-   		     document.write("<iframe src=\"IOTNM_Pages/NetReg.jsp\" width=\"100%\" height=\"100%\"> </iframe>");
+   		     document.write("<iframe src=\"Reg.jsp\" width=\"100%\" height=\"100%\"> </iframe>");
    		 </script>
     </div>
     --%>

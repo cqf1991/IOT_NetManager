@@ -18,6 +18,8 @@ import org.xvolks.jnative.exceptions.NativeException;
 import com.iotNM.common.Client;
 import com.iotNM.common.javaCallDll;
 import com.iotNM.service.navTreeManager;
+import com.iotNM.tests.ComMsg;
+import com.iotNM.tests.packageBody;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -32,26 +34,21 @@ import com.opensymphony.xwork2.ActionSupport;
 public class messageCpAction extends ActionSupport {
 
 	private navTreeManager anavTreeManager = new navTreeManager();
-	private static 	ServerSocket server = null;
-	private static  Socket socket = null;
-	
+	private static ServerSocket server = null;
+	private static Socket socket = null;
 
-	
-	public void closeSocket() throws IOException
-	{
+	public void closeSocket() throws IOException {
 		messageCpAction.server.close();
-		}
+	}
 
 	@RemoteMethod
-	public void getDIR() throws NativeException, IOException
-	{
+	public void getDIR() throws NativeException, IOException {
 
-		new Client().sendMsg(1,null);
+		new Client().sendMsg(1, null);
 	}
-	
+
 	@RemoteMethod
 	public void messageCP(final int socketPort) {// 参数需要添加xmlpath,dllpath
-		String DLLpath = "C:\\ClientDll.dll"; //test
 		Browser.withAllSessionsFiltered(new ScriptSessionFilter() {
 			public boolean match(ScriptSession session) {
 				return true;
@@ -59,53 +56,62 @@ public class messageCpAction extends ActionSupport {
 		}, new Runnable() {
 
 			private ScriptBuffer script = new ScriptBuffer();
-			public void run() {						
+
+			public void run() {
 				try {
 					server = new ServerSocket(socketPort);
 				} catch (Exception e) {
 					System.out.println("Error1:" + e);
 				}
-					try {
+				try {
+					while (true) {
 						System.out.println("Listening");
 						socket = server.accept();
-					} catch (Exception e) {
-						System.out.println("Error2:" + e);
-					}
-					InputStream is = null;
-					String xmlFileString = "";
-					int packageNum = 0;
-					try {
-						is = socket.getInputStream();
-					} catch (IOException e) {
-						System.out.println("Error3:" + e);
-					}
-					String xmlTemp = null;
-					byte[] chars = new byte[1024];
-					try {
 						
-						while (is.read(chars) != -1) {
-							if (packageNum == 0) {
-								packageNum++;
-								continue;
+						InputStream is = null;
+						int packageNum = 0;
+						try {
+							is = socket.getInputStream();
+						} catch (IOException e) {
+							System.out.println("Error3:" + e);
+						}
+						byte[] chars = new byte[1024];
+						try {
+							is.read(chars);
+							System.out.println(chars);// 按位输出
+							System.out.println("一条记录读取完毕！");
+							ComMsg cm = new ComMsg(chars);//
+							// server.close();// test 监听一次
+							script = new ScriptBuffer();
+							String outputString = "DataPackageName="
+									+ cm.getDataPackageName()
+									+ "</br>UserAppid=" + cm.getUserAPPID()
+									+ "</br>Time=" + cm.getTime()
+									+ "</br>KeyNum=" + cm.getKeyNum();
+							String keyvalueMessage = "";
+							for (packageBody entry : cm.getDataPackageBody()) {
+
+								String key = entry.getKeyName();
+								String value = entry.getKeyValue();
+								keyvalueMessage += "keyName=" + key
+										+ "  keyValue=" + value;
+
 							}
-							xmlTemp = new String(chars, "GB2312").substring(37)
-									.trim();
-							xmlFileString += xmlTemp;
+							script.appendCall("testDWR", outputString
+									+ "------" + keyvalueMessage);// test
+							// 我需要给你一条什么样的数据？
+							Collection<ScriptSession> sessions = Browser
+									.getTargetSessions();
+							for (ScriptSession scriptSession : sessions) {
+								scriptSession.addScript(script);
+							}
+						} catch (IOException e) {
+							System.out.println("Error4:" + e);
 						}
-						xmlFileString = xmlFileString.replaceAll("\r|\n", "");
-						System.out.println(xmlFileString);
-						server.close();//test 监听一次
-						String jsonObject=createNavTree(xmlFileString);	
-						script = new ScriptBuffer();
-						script.appendCall("testDWR", jsonObject);
-						Collection<ScriptSession> sessions = Browser
-								.getTargetSessions();
-						for (ScriptSession scriptSession : sessions) {
-							scriptSession.addScript(script);
-						}
-					} catch (IOException e) {
-						System.out.println("Error4:" + e);
-					}				
+					}
+				} catch (Exception e) {
+					System.out.println("Error2:" + e);
+				}
 			}
 		});
 
@@ -114,7 +120,7 @@ public class messageCpAction extends ActionSupport {
 	public String createNavTree(String comMsg) {
 
 		return anavTreeManager.generateTree(comMsg);
-		
+
 	}
 }
 

@@ -39,8 +39,7 @@ import com.iotNM.common.ReflectionUtils;
  * 
  * @param <T> DAO操作的对象类型
  * @param <PK> 主键类型
- * 
- * @author 尔演&Eryan eryanwcp@gmail.com
+
  */
 @SuppressWarnings("unchecked")
 public class SimpleHibernateDao<T, PK extends Serializable> {
