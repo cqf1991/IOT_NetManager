@@ -50,8 +50,10 @@ public class byteConvert {
     }
     public static void main(String[] args) {
 		
-    	byte[] inputMsg={1, 0, 0, 0, }	;
-    	bytesToInt(inputMsg, 0);
+    	byte[] inputMsg={3, 3, 0, 0,0,0,0 ,0}	;
+    	
+    	System.out.println(byteToDouble(inputMsg));
+    	
 	}
   //字节到浮点转换  
     public static double byteToDouble(byte[] b){  
