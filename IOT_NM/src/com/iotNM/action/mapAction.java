@@ -8,11 +8,13 @@ public class mapAction extends ActionSupport {
 	
 	@Override
 	public String execute() throws Exception {
-		
+
+		//String aaa=Struts2Utils.getParameter("wlms");
 		Struts2Utils.renderText(mapMsg);
 		// TODO Auto-generated method stub
 	return null;//return null 或者void时返回的无整个页面的html
 	
 	}
+
 
 }

@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     #center2{height:100%;width:100%;float:left;border-right:2px solid #bcbcbc;}
 </style>
 
-
+<script type="text/javascript" src="./js/IOTNM_JS/Register.js" charset="GB2312"></script>
 <script type="text/javascript" src="./js/IOTNM_JS/BDMap.js" charset="GB2312"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xa6IlSTZtjDqZ8MKw3AU2lN5" ></script>
 <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
@@ -35,7 +35,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type='text/javascript' src='/IOT_NM/dwr/engine.js'></script>
 <script type='text/javascript' src='/IOT_NM/dwr/interface/messagePush.js'></script>
 <script type='text/javascript' src='/IOT_NM/dwr/util.js'></script>
+
+<link rel="stylesheet" type="text/css" href="css/GroupTabPanel.css">
+
+
 <script type="text/javascript">
+ Ext.require([
+            'Ext.Viewport',
+            'Ext.tab.Panel',
+            'Ext.ux.GroupTabPanel' 
+        ]);
 
 	var MM="[{ Net: '', SubNet: '', Node: '', NodeType: '', MsgType:'',MsgCount:'', MsgSequence:'', MsgBody:'', Route:'', Voltage:'', MsgTime:'', NetID:'', SubnetID:''}]";
 	var MyMsg =Ext.JSON.decode(MM);
@@ -286,31 +295,11 @@ function notload(){
         function onItemCheck(item, checked){
             alerm = checked;
         }
-        function onItemClick(item)
+     function onItemClick(item)
         {
             if(item.id == "SBSCRB")
             {
-            	var centerPanel = Ext.getCmp("centerPanel");
-            	if(Ext.getCmp("subscribeTab")==null)
-            	{
-	            	centerPanel.add({
-	    	        	//contentEl: 'center1',
-	    	        	id: 'subscribeTab',
-	    	            title: '注册',
-	    	            autoScroll: false,
-	    	            layout: 'fit',
-	    	            //closeAction: 'hide',
-	    	            closable: true
-	                });
-	            	Ext.getCmp("subscribeTab").body.update('<iframe scrolling="auto"  frameborder="0" width="100%" height="100%" src="login.action"></iframe>  ');
-	            	centerPanel.setActiveTab("subscribeTab");
-	            	
-            	}
-            	else
-            	{
-            		Ext.getCmp("subscribeTab").body.update('<iframe scrolling="auto"  frameborder="0" width="100%" height="100%" src="login.action"></iframe>  ');
-	            	centerPanel.setActiveTab("subscribeTab");
-            	}
+            	ZhuCe();
             }
             else if(item.id == "systemSet")
             {
@@ -320,7 +309,7 @@ function notload(){
 	            	centerPanel.add({
 	    	        	id: 'systemSetTab',
 	    	            title: '系统设置',
-	    	            xtype: 'tabpanel',
+	    	            xtype: 'tabpanel', // 
                    		tabPosition: 'left',
                    		deferredRender: false,
                 		activeTab: 0,
@@ -333,13 +322,9 @@ function notload(){
                     		defaultType: 'textfield',
                 			defaults: {
                     			anchor: '100%'
-                			},
-                			items: LJWgrid
+                			}
+                			
                 		}]
-	    	            //autoScroll: false,
-	    	            //layout: 'fit',
-	    	            //closeAction: 'hide',
-	    	            //closable: true
 	                });
 	            	centerPanel.setActiveTab("systemSetTab");
             	}
