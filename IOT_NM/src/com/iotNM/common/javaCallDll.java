@@ -48,7 +48,7 @@ public class javaCallDll {
         try {  
             JNative getUrl = new JNative("C:\\IOTRegServiceDll.dll", "NetRegMessageBuilder"); //创建 getUrl 方法的<span style="font-family: Arial, Helvetica, sans-serif;">JNative对象</span>  
             Pointer returnPointer=new Pointer(MemoryBlockFactory.createMemoryBlock(1024));
-            getUrl.setRetVal(Type.INT); //设置返回值类型为：String  
+            getUrl.setRetVal(Type.INT); //设置返回值类型为：INT  
             getUrl.setParameter(0, aNetMsg.getStrNetName()); //按顺序设置方法需要的参数值  
             getUrl.setParameter(1, aNetMsg.getStrNetDescrption());  
             getUrl.setParameter(2, aNetMsg.getStrAddress()); 
@@ -92,7 +92,7 @@ public class javaCallDll {
 	        try {  
 	            JNative getUrl = new JNative("C:\\IOTRegServiceDll.dll", "NetRegMessageBuilder"); //创建 getUrl 方法的<span style="font-family: Arial, Helvetica, sans-serif;">JNative对象</span>  
 	            Pointer returnPointer=new Pointer(MemoryBlockFactory.createMemoryBlock(1024));
-	            getUrl.setRetVal(Type.INT); //设置返回值类型为：String  
+	            getUrl.setRetVal(Type.INT); //设置返回值类型为：INT  
 	            getUrl.setParameter(0, asubNetMsg.getnNetId()); //按顺序设置方法需要的参数值  
 	            getUrl.setParameter(1, asubNetMsg.getnSubnetId());  
 	            getUrl.setParameter(2, asubNetMsg.getStrSubnetName()); 
@@ -123,7 +123,7 @@ public class javaCallDll {
         try {  
             JNative getUrl = new JNative("C:\\IOTRegServiceDll.dll", "NetRegMessageBuilder"); //创建 getUrl 方法的<span style="font-family: Arial, Helvetica, sans-serif;">JNative对象</span>  
             Pointer returnPointer=new Pointer(MemoryBlockFactory.createMemoryBlock(1024));
-            getUrl.setRetVal(Type.INT); //设置返回值类型为：String  
+            getUrl.setRetVal(Type.INT); //设置返回值类型为：INT  
             getUrl.setParameter(0, anodeMsg.getStrDsption()); //按顺序设置方法需要的参数值  
             getUrl.setParameter(1, anodeMsg.getnNodeAddr());  
             getUrl.setParameter(2, anodeMsg.getStrProducer()); 
@@ -152,7 +152,7 @@ public class javaCallDll {
         try {  
             JNative getUrl = new JNative("C:\\IOTRegServiceDll.dll", "NetRegMessageBuilder"); //创建 getUrl 方法的<span style="font-family: Arial, Helvetica, sans-serif;">JNative对象</span>  
             Pointer returnPointer=new Pointer(MemoryBlockFactory.createMemoryBlock(1024));
-            getUrl.setRetVal(Type.INT); //设置返回值类型为：String  
+            getUrl.setRetVal(Type.INT); //设置返回值类型为：INT  
             getUrl.setParameter(0, asensorMsg.getStrSensorName()); //按顺序设置方法需要的参数值  
             getUrl.setParameter(1, asensorMsg.getStrSenorDescription());  
             getUrl.setParameter(2, asensorMsg.getStrProducer()); 
