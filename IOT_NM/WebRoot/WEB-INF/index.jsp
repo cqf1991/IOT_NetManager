@@ -26,6 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xa6IlSTZtjDqZ8MKw3AU2lN5" ></script>
 <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
 <script type="text/javascript" src="./js/IOTNM_JS/Hashtable.js"></script>
+<script type="text/javascript" src="./js/IOTNM_JS/Vtype.js" charset="GB2312"></script><!--注册验证  -->
 
 <script type="text/javascript" src="./js/IOTNM_JS/Map.js" charset="GB2312"></script>
 
@@ -62,15 +63,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var jsonString="";
 
 
-	var treeJson=[{text:'2号网络',leaf:false,children:[{text:'1号子网',leaf:false,children:[{text:'123号节点',leaf:false,children:[{text:'温度传感器',leaf:true,children:[]}]}]},{text:'2号子网',leaf:false,children:[{text:'7号节点',leaf:false,children:[]},]}]},{text:'6号网络',leaf:false,children:[]},{text:'7号网络',leaf:false,children:[]},{text:'4号网络',leaf:false,children:[{text:'2号子网',leaf:false,children:[]}]},{text:'9号网络',leaf:false,children:[]},{text:'10号网络',leaf:false,children:[]},{text:'5号网络',leaf:false,children:[]},{text:'12号网络',leaf:false,children:[]},{text:'13号网络',leaf:false,children:[]},{text:'8号网络',leaf:false,children:[{text:'1号子网',leaf:false,children:[{text:'7号节点',leaf:false,children:[]}]}]},{text:'15号网络',leaf:false,children:[]},{text:'16号网络',leaf:false,children:[]},{text:'11号网络',leaf:false,children:[]},{text:'18号网络',leaf:false,children:[]},{text:'19号网络',leaf:false,children:[]},{text:'14号网络',leaf:false,children:[]},{text:'21号网络',leaf:false,children:[]},{text:'22号网络',leaf:false,children:[]},{text:'17号网络',leaf:false,children:[]},{text:'24号网络',leaf:false,children:[]},{text:'25号网络',leaf:false,children:[]},{text:'20号网络',leaf:false,children:[]},{text:'23号网络',leaf:false,children:[]}];
 	
 	function onPageLoad(){
 		
-		//initMap(Nets); 
-		messagePush.messageCP(4031);
+		initMap(Nets); 
+		//messagePush.messageCP(4031);
 	  	
 	  }
-function notload(){
+//function notload(){
 	  Ext.Ajax.request({
 	 	    url: 'dirService!getDIR',
 	 	    success: function(response){
@@ -98,9 +98,7 @@ function notload(){
 	           treeitem.on('itemclick',function(view, rcd, item, idx, event, eOpts) {
 	                    console.log(item);
 	                    NavTreeEvent(rcd,Nets);
-	              });
-		
-	 	    	
+	              });			 	    	
 	 	    }
 	 	});
 	  Ext.Ajax.request({
@@ -114,7 +112,7 @@ function notload(){
 
 		 //messagePush.messageCP(4031);//当getString从服务器取回数据后的回调函数,data为返回的值);//端口号为参数  待完善
 		 //messagePush.getDIR();
-}
+//}
 	
 	 //推送信息
 	 function testDWR(msg)

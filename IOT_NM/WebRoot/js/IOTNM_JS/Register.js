@@ -1,21 +1,19 @@
-﻿
-var strJson={"IOT_DIR":{"NETS":[{"NET":[{"CVRG_LB_Y":["115.833313"],"SUBNET":[{"CVRG_LB_Y":["123."],"CVRG_LB_X":["123."],"CVRG_RU_Y":["100."],"CVRG_RU_X":["100."],"NODE":[{"SENSOR":[{"UNIT":["40"],"STPNM":["温度"],"SNSR_TP":["1"],"DSPTN":["1"]}],"TRSMTPWR":["123123"],"NDDSPT":["123"],"NDPHDR":["123"],"SENSORSIZE":["1"],"LCTN_X":["123."],"LCTN_Y":["123."]}],"NODESIZE":["1"],"NTNM":["1号"],"SBNTID":["1"],"DSPT":["123"]},{"CVRG_LB_Y":["10."],"CVRG_LB_X":["8."],"CVRG_RU_Y":["11."],"CVRG_RU_X":["11."],"NODE":[{"TRSMTPWR":["3"],"NDDSPT":["6"],"NDPHDR":["7"],"LCTN_X":["8."],"LCTN_Y":["9."]}],"NODESIZE":["1"],"NTNM":["3"],"SBNTID":["2"],"DSPT":["4"]}],"CVRG_LB_X":["28.6553593"],"CVRG_RU_Y":["1."],"NTDSCRPT":["1"],"CVRG_RU_X":["11."],"SUBNETSIZE":["2"],"NTID":["2"]},{"CVRG_LB_Y":["115.837997"],"CVRG_LB_X":["28.6580009"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["1."],"NTID":["6"]},{"CVRG_LB_Y":["115.838997"],"CVRG_LB_X":["28.6590004"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["1."],"NTID":["7"]},{"CVRG_LB_Y":["115.835541"],"SUBNET":[{"CVRG_LB_Y":["10."],"CVRG_LB_X":["8."],"CVRG_RU_Y":["11."],"CVRG_RU_X":["11."],"NTNM":["3"],"SBNTID":["2"],"DSPT":["4"]}],"CVRG_LB_X":["28.6561203"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["1."],"SUBNETSIZE":["1"],"NTID":["4"]},{"CVRG_LB_Y":["115.841003"],"CVRG_LB_X":["28.6609993"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["1."],"NTID":["9"]},{"CVRG_LB_Y":["115.842003"],"CVRG_LB_X":["28.6620007"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["1."],"NTID":["10"]},{"CVRG_LB_Y":["115.836998"],"CVRG_LB_X":["28.6569996"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["11."],"NTID":["5"]},{"CVRG_LB_Y":["115.844002"],"CVRG_LB_X":["28.6639996"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["1."],"NTID":["12"]},{"CVRG_LB_Y":["115.845001"],"CVRG_LB_X":["28.6650009"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["1."],"NTID":["13"]},{"CVRG_LB_Y":["115.839996"],"SUBNET":[{"CVRG_LB_Y":["10."],"CVRG_LB_X":["8."],"CVRG_RU_Y":["11."],"CVRG_RU_X":["11."],"NODE":[{"TRSMTPWR":["3"],"NDDSPT":["6"],"NDPHDR":["7"],"LCTN_X":["8."],"LCTN_Y":["9."]}],"NODESIZE":["1"],"NTNM":["aaaa"],"SBNTID":["1"],"DSPT":["?°????è??é??"]}],"CVRG_LB_X":["28.7599998"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["1."],"SUBNETSIZE":["1"],"NTID":["8"]},{"CVRG_LB_Y":["115.847"],"CVRG_LB_X":["28.6669998"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["11."],"NTID":["15"]},{"CVRG_LB_Y":["115.848"],"CVRG_LB_X":["28.6679993"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["11."],"NTID":["16"]},{"CVRG_LB_Y":["115.843002"],"CVRG_LB_X":["28.6630001"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["1."],"NTID":["11"]},{"CVRG_LB_Y":["115.849998"],"CVRG_LB_X":["28.6700001"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["11."],"NTID":["18"]},{"CVRG_LB_Y":["115.850998"],"CVRG_LB_X":["28.6709995"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["11."],"NTID":["19"]},{"CVRG_LB_Y":["115.846001"],"CVRG_LB_X":["28.6660004"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["1."],"NTID":["14"]},{"CVRG_LB_Y":["115.852997"],"CVRG_LB_X":["28.6730003"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["11."],"NTID":["21"]},{"CVRG_LB_Y":["115.853996"],"CVRG_LB_X":["28.6739998"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["11."],"NTID":["22"]},{"CVRG_LB_Y":["115.848999"],"CVRG_LB_X":["28.6690006"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["11."],"NTID":["17"]},{"CVRG_LB_Y":["115.856003"],"CVRG_LB_X":["28.677"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["11."],"NTID":["24"]},{"CVRG_LB_Y":["115.857002"],"CVRG_LB_X":["28.6779995"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["11."],"NTID":["25"]},{"CVRG_LB_Y":["115.851997"],"CVRG_LB_X":["28.6720009"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["11."],"NTID":["20"]},{"CVRG_LB_Y":["115.855003"],"CVRG_LB_X":["28.6749992"],"CVRG_RU_Y":["12."],"NTDSCRPT":["3"],"CVRG_RU_X":["11."],"NTID":["23"]}],"NETSIZE":["23"]}]}};
-var Nets=strJson.IOT_DIR.NETS[0];
-var net=new Array();
+﻿var net=new Array();
 var subnet=new Array();
 var node=new Array();
 var sensor=new Array();
-
+var tip="带<font color=red>*</font>为必填项";
+var star="<font color=red>*</font>";
+var langitude=/^(-?((180)|(((1[0-7]\d)|(\d{1,2}))(\.\d+)?)))$/g;
+var latitude=/^(-?((90)|((([0-8]\d)|(\d{1}))(\.\d+)?)))$/g;
 function ZhuCe()//注册功能
-{
-
-        
+{    
         var centerPanel = Ext.getCmp("centerPanel");  //Ext.ComponentManager.get方法的简写。 通过id查找现有的Component
             	if(Ext.getCmp("subscribeTab")==null)
             	{
-         			
 	            	centerPanel.add({	
 	            	id:'subscribeTab',
+	            
 					title:'注册',
 					animCollapse:true,
 					closable:true,
@@ -23,33 +21,38 @@ function ZhuCe()//注册功能
 					 layout: 'fit',   	
 					 listeners:{'beforeclose':function(){
 	            		var w = Ext.getCmp('buttomGrid');
+	            		//var g=Ext.getCmp('eastPanel');
 	            		if(w!=null)
-		            	Ext.getCmp('buttomGrid').expand();
+		            	w.expand();
+	            		//if(g!=null)
+	            		//g.expand();
                       }} ,
-	            	frame:true,
-	            	 
-                      items: [{
-                    	  activeGroup: 1,
+	            	frame:true, 
+                      items: [{        	
                     	  xtype: 'grouptabpanel',
                     	  //默认值为0，但0组因为bug问题被隐藏 
+                    	  activeGroup:1,
+                    	  id:'fds',
                     	  items: [{
-                    		  
-                    		  items:[{}  
+                    		// hidden:true,
+                    		  items:[{ }  
                     		  ]}, 
-                    	  {	
-                expanded: false,
-                items: {
-                    mainItem:1,
+                  {	
+                      id:'wlzc1', 
+                     items: {                   
+                   
                     title: '网络注册',
                     style: 'padding: 10px',
+                    id:'wlzc',
                     border: false,
                     autoScroll:true,
                     items:[{
                     	xtype:'form',
                     	id:'netReg',
                     	title:'网络注册',
+                    	
                     	bodyPadding:10,
-                    
+                    	html:tip,
                     	autoScroll:true,
                     	
                   		 fieldDefaults:{
@@ -58,41 +61,40 @@ function ZhuCe()//注册功能
                     	labelWidth: 60,
                     },
                     	defaults:{
-                    	expanded: false,
-                    	allowBlank:false,	
                     	style:"margin-left:10px;margin-bottom:8px;"
                     },  
                     	items:[
                     	 {
                     		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                    	{xtype:'textfield',fieldLabel:'网络名称:',id:'NTID',anchor:'80%',name:'NTID'},{xtype:'textfield',id:'ssdw',anchor:'80%',fieldLabel:'所属单位:'}
+                    	{xtype:'textfield',fieldLabel:'网络名称',anchor:'80%',name:'wlmc',allowBlank:false,afterLabelTextTpl:star,vtype:'alphanum'},
+                    	{xtype:'textfield',name:'ssdw',anchor:'80%',fieldLabel:'所属单位'}
                     	 ]},
                     	 {
                     		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                    	{xtype:'textfield',fieldLabel:'网络描述:',id:'NTDSCRPT',name:'wlms'},{xtype:'textfield',id:'dd',fieldLabel:'地点:'}
+                    	{xtype:'textfield',fieldLabel:'网络描述',name:'wlms'},{xtype:'textfield',name:'dd',fieldLabel:'地点'}
                     	 ]},
                     	 {
                     		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                    	{xtype:'textfield',fieldLabel:'维护单位:',name:'whdw',},{xtype:'textfield',id:'lxr',fieldLabel:'联系人:'}
+                    	{xtype:'textfield',fieldLabel:'维护单位',name:'whdw',},{xtype:'textfield',name:'lxr',fieldLabel:'联系人',minLengthText:'人名不能低于2个字',minLength:2}
                     	 ]},
-                    	 {
-                    		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                    	{xtype:'textfield',id:'lxdh',fieldLabel:'联系电话:'},{xtype:'textfield',id:'bz',fieldLabel:'备注:'}
-                    	 ]},
+                    	{xtype:'textfield',name:'lxdh',fieldLabel:'联系电话',anchor:'40.5%',padding:8,vtype:'phoneNumber'}
+                    	 ,
                     	 {
                     		 xtype:'fieldset',title:'覆盖范围经纬度',anchor:'80%',items:[
                     	 {
                     		 xtype:'container',layout:'hbox',defaults:{padding:8},items:[
-                    	{xtype:'textfield',id:'fgzsjd',fieldLabel:'覆盖范围左上点经度:',name:'NTID',},{xtype:'textfield',id:'fgzxjd',fieldLabel:'覆盖范围左下点经度:'}
+                    	{xtype:'textfield',id:'fgzsjd',fieldLabel:'覆盖范围左上点经度',name:'fgfwzsjd',regexText:'请输入正确的经度格式'}
+                    	,{xtype:'textfield',id:'fgzxjd',fieldLabel:'覆盖范围左下点经度',name:'fgfwzxjd',regexText:'请输入正确的纬度格式'}
                     	 ]},
                     	 {
                     		 xtype:'container', layout:'hbox',defaults:{padding:8},items:[
-                    	{xtype:'textfield',id:'fgysjd',fieldLabel:'覆盖范围右上点经度:',name:'NTID',},{xtype:'textfield',id:'fgyxjd',fieldLabel:'覆盖范围右下点经度:'}
+                    	{xtype:'textfield',id:'fgysjd',fieldLabel:'覆盖范围右上点经度',name:'fgfwysjd',regexText:'请输入正确的经度格式'}
+                    	,{xtype:'textfield',id:'fgyxjd',fieldLabel:'覆盖范围右下点经度',name:'fgfwyxjd',regexText:'请输入正确的纬度格式'}
                     	 ]} 
-                    	 ]}
+                    	 ]},{xtype:'textarea',name:'bz',fieldLabel:'备注',minWidth:280,anchor:'80%'}
                     	 
                     	],
-                    	buttons:[{text:'提交',handler:function(){
+                    	buttons:[{text:'提交',handler:function(field){
                     		var form =Ext.getCmp('netReg').form;
                     		if(form.isValid()){
                     			form.submit({
@@ -115,24 +117,28 @@ function ZhuCe()//注册功能
                     		
                     		}
                     	},
-                    	         {text:'重置',handler:function(){Ext.getCmp('netReg').form.reset();}}]
+                    	         {text:'重置',handler:function(){Ext.getCmp('netReg').getForm().reset();}}]
                     }]       
                 }
                 },
-            {           
+            {        
                 items: {
                     title: '子网注册',
                     style: 'padding: 10px',
                     border: false,
+                    id:'zwzc',
+                  
                     autoScroll:true,
                     items:[{
                     	xtype:'form',
                     	//layout:'hbox',
                     	id:'subnetReg',
                     	title:'子网注册',
+                    	  html:tip,
                     	//defaultMargins: {top: 0, right: 5, bottom: 0, left: 0},
                     	bodyPadding:10,
                     	autoScroll:true,
+                   
                   		defaultType:'textfield',
                   	    fieldDefaults:{
                     	flex:1,
@@ -140,7 +146,7 @@ function ZhuCe()//注册功能
                     },
                     	defaults:{
                     	expandeds: false,
-                    	allowBlank:false,	
+                    
                     	style:"margin-left:10px;"
                     },       
                     	items:[
@@ -148,58 +154,87 @@ function ZhuCe()//注册功能
                         	 xtype:'container',layout:'hbox',anchor:'80%',defaults:{padding:8},items:[
                         	{
                         	xtype:'combobox',
-                        	fieldLabel:'网络名称:',
+                        	fieldLabel:'网络名称',
+                        	allowBlank:false,
                         	id:'NetOfSubReg',
+                        	name:'wlmc',
                         	emptyText:'请选择网络',
                         	store:netStore(),
-                        	},{xtype:'textfield',fieldLabel:'子网编号:'}
+                        	},{xtype:'textfield',name:'zwbh',allowBlank:false,fieldLabel:'子网编号',regex:/^[0-9]{1,3}$/,regexText:'输入0~3位数字',afterLabelTextTpl:star}
                         	 ]},
                         	 {
                         		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                        	{xtype:'textfield',fieldLabel:'子网名称:',name:'wlms'},{xtype:'textfield',fieldLabel:'子网描述:'}
+                       	{xtype:'textfield',fieldLabel:'子网名称',name:'zwmc',allowBlank:false,afterLabelTextTpl:star,vtype:'alphanum'}// 子网名称
+                        	,{xtype:'textfield',name:'zwms',fieldLabel:'子网描述',beforeLabelText:[star]}
                         	 ]},                        	 
                         	 {
                         		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                        	{xtype:'textfield',fieldLabel:'子网地址:',name:'lxdh',},{xtype:'textfield',fieldLabel:'工作信道:'}
+                        	{xtype:'textfield',name:'zwdz',fieldLabel:'子网地址',allowBlank:false,name:'lxdh',afterLabelTextTpl:star,vtype:'IPaddress'}
+                        	,{xtype:'textfield',name:'gzxd',fieldLabel:'工作信道'}
                         	 ]},   
                         	 {layout:'hbox',xtype:'fieldcontainer',anchor:'80%',items:[
-                          	 {layout:'hbox',xtype:'fieldcontainer',anchor:'80%',defaults:{padding:8},
-                          		 items:[{xtype: 'textfield',fieldLabel:'工作周期'},{xtype:'displayfield',value:'(单位:秒)'}]
+                          	 {layout:'hbox',xtype:'fieldcontainer',minWidth:230,defaults:{padding:8},
+                          		 items:[{xtype: 'textfield',fieldLabel:'工作周期',vtype:'number'},{xtype:'displayfield',name:'gzzq',value:'(单位:秒)',maxWidth:60}]
                          	  },
                          	  {layout:'hbox',xtype:'fieldcontainer',anchor:'80%',defaults:{padding:8},items:[
-                         	  {fieldLabel:'接入方式:',xtype:'combobox'},{xtype:'button',text:'添加',handler:NodeAdd,autoRender:true}]
+                         	  {fieldLabel:'接入方式',xtype:'combobox',name:'jrfs', mode:'local',store:jrfs,value:['TCP/IP']},{xtype:'button',text:'添加',handler:NodeAdd}]
                          	  },
                          	 ]},
                         	 {
                         		 xtype:'fieldset',title:'覆盖范围经纬度',anchor:'80%',items:[
                         	 {
                         		 xtype:'container',layout:'hbox',defaults:{padding:8},items:[
-                        	{xtype:'textfield',fieldLabel:'覆盖范围左上点经度:',name:'NTID',},{xtype:'textfield',fieldLabel:'覆盖范围左下点经度:'}
+                        	{xtype:'textfield',fieldLabel:'覆盖范围左上点经度',name:'fgfwzsjd',regex:langitude,regexText:'请输入正确的经度格式'}
+                        	,{xtype:'textfield',fieldLabel:'覆盖范围左下点经度',name:'fgfwzxwd',regex:latitude,regexText:'请输入正确的经度格式'}
                         	 ]},
                         	 {
                         		 xtype:'container', layout:'hbox',defaults:{padding:8},items:[
-                        	{xtype:'textfield',fieldLabel:'覆盖范围右上点经度:',name:'NTID',},{xtype:'textfield',fieldLabel:'覆盖范围右下点经度:'}
+                        	{xtype:'textfield',fieldLabel:'覆盖范围右上点经度',name:'fgfwysjd',regex:langitude,regexText:'请输入正确的经度格式'}
+                        	,{xtype:'textfield',fieldLabel:'覆盖范围右下点经度',name:'fgfwyxwd',regex:latitude,regexText:'请输入正确的经度格式'}
                         	 ]} 
                         	 ]
                         	 }],
-                    	buttons:[{text:'提交',autoRender:true},{text:'重置'}]
+                         	buttons:[{text:'提交',handler:function(field){
+                        		var form =Ext.getCmp('subnetReg').form;
+                        		if(form.isValid()){
+                        			form.submit({
+                        				url:'regAction!subNetReg.action',	
+                        				method:'post',
+                        				params:{
+                        				RegType:'subnet',
+                        				
+                        			},
+                        				success:function(form,action){
+                        				console.log(action);
+                        			},
+                        				failure:function(form,action){
+                        				console.log(action);
+                        				
+                        				},
+                        			});
+                        			
+                        		}
+                        		
+                        		}
+                        	},
+                        	         {text:'重置',handler:function(){Ext.getCmp('subnetReg').getForm().reset();}}]
                     }]       
                 }
                 }
-            ,{
-                
+            ,{ 
                 items: {
                 title: '节点注册',    
                 tabTip: 'Configuration tabtip',
                 style: 'padding: 10px',
                 border: false,
                 autoScroll:true,
-
+               
                 items:[{
                 	xtype:'form',
                 	id:'nodeReg',
                 	title:'节点注册',
                 	bodyPadding:10,
+                	 html:tip,
                 	autoScroll:true,
               		defaultType:'textfield',
               		fieldDefaults:{
@@ -208,77 +243,131 @@ function ZhuCe()//注册功能
                 },
                 	defaults:{
                 	expanded: false,
-                	allowBlank:false,	
+               	
                 	style:"margin-left:10px;"
                 },       
                 	items:[
                         	 {
                             	 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
                             	{xtype:'combobox',
+                            	afterLabelTextTpl:star,
+                            	allowBlank:false,
                             	fieldLabel:'网络名称:',
+                            	id:'netStore',
                             	emptyText:'请选择网络',
-                            	store:netStore(),
-                            	valueField:net,
-                            	displayField:netStore(),
-                            	id:'subnetStore',
-                            	name:'NTID',
-                            	listeners:{'select':function(comboBox,rec){   		
-                               	//	console.log(rec);
+                            	store:netStore(),   	                	
+                            	name:'wlmc',
+                            	
+                            	hiddenName:'value',
+                            	listeners:{'select':function(combo,rec){ 
+                            			var val=combo.getValue();
+                            			var subStore=new Array();
+                            			var ss=Ext.getCmp('subnetStore');
+                            			var v=Ext.getCmp('value');
+                            			for(var index in net)
+                            				if((net[index].NTID+"号网络")==val){
+                            					if(net[index].SUBNET!=null){
+                            						subStore=[];
+                            						console.log(rec);
+                            						console.log(combo);
+                            						ss.setValue('请选择子网');
+                            						for(var i in net[index].SUBNET){ 
+                            							var subarray=new Array();                            							
+                            							subarray.push(net[index].SUBNET[i].SBNTID+"号子网");
+          
+                            						 	subStore.push(subarray);
+                            						}
+                            						ss.store.loadData(subStore);			
+                            						
+                            					}else{
+                            						subStore=[];
+                            						ss.store.loadData(subStore);
+                            						ss.setValue('此网络无子网');
+                            					}         				                          					
+                            				}                     			
                             	}}
                             	},
                             	{
-                             	xtype:'combobox',     	
+                            	afterLabelTextTpl:star,
+                             	xtype:'combobox', 
+                             	
+                             	emptyText:'请选择子网',
+                             	id:'subnetStore',
+                             	name:'zwmc',
+                             	allowBlank:false,
                             	fieldLabel:'子网名称:',
-                            	data:[],
-                            	value:['ss'],         	
+                            	store: []                  	       	
                              	}
-                            	
                             	 ]},
                             	 {
                             		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                            	{xtype:'textfield',fieldLabel:'发射功率:',name:'wlms'},{xtype:'textfield',fieldLabel:'生产厂商:'}
+                            	{xtype:'textfield',fieldLabel:'发射功率',name:'fsgl',vtype:'alphanum'}
+                            	,{xtype:'textfield',fieldLabel:'生产厂商',name:'sccs',vtype:'alphanum'}
                             	 ]},                
 
                             	 {layout:'hbox',xtype:'fieldcontainer',anchor:'80%',items:[
-                              	 {layout:'hbox',xtype:'fieldcontainer',anchor:'80%',defaults:{padding:8},items:[{xtype: 'textfield',minWidth:'30',fieldLabel:'工作周期'},{xtype:'displayfield',value:'(单位:秒)'}]
-                             	  },
+                            	 {xtype:'textfield',fieldLabel:'规格型号和软件版本',name:'ggxhhrjbb'},                                                        
                              	  {layout:'hbox',xtype:'fieldcontainer',anchor:'80%',defaults:{padding:8},items:[
-                             	  {fieldLabel:'节点类型:',xtype:'combobox'},{xtype:'button',text:'添加',handler:NodeAdd,autoRender:true}]
+                             	  {fieldLabel:'节点类型',xtype:'combobox',name:'jdlx',afterLabelText:star}
+                             	  ,{xtype:'button',text:'添加',handler:NodeAdd,autoRender:true}]
                              	  },
                              	 ]},
                             	 {
                             		 xtype:'container',layout:'hbox',anchor:'80%',defaults:{padding:8},items:[
-                            	{xtype:'textfield',fieldLabel:'节点描述信息:',name:'NTID',},{xtype:'textfield',fieldLabel:'节点物理地址:'}
+                            	{xtype:'textfield',fieldLabel:'节点描述信息',name:'jdmsxx',}
+                            	,{xtype:'textfield',fieldLabel:'节点物理地址',name:'jdwldz',afterLabelText:star,vtype:'Mac'}
                             	 ]},
                             	 {
                             		 xtype:'container',layout:'hbox',anchor:'80%',defaults:{padding:8},items:[
-                            	{xtype:'textfield',fieldLabel:'节点位置经度:',name:'NTID',},{xtype:'textfield',fieldLabel:'节点位置纬度:'}
+                            	{xtype:'textfield',fieldLabel:'节点位置经度',name:'jdwzjd',regex:langitude,regexText:'请输入正确的经度格式'}
+                            	,{xtype:'textfield',fieldLabel:'节点位置纬度',name:'jdwzwd',regex:latitude,regexText:'请输入正确的纬度格式'}
                             	 ]},
                             	 {
                             	 xtype:'container', layout:'hbox',anchor:'80%',defaults:{padding:8},items:[
-                            	 {xtype:'textfield',fieldLabel:'规格型号和软件版本:',name:'NTID',}
-                            	 ]},{xtype:'textarea',padding:10,fieldLabel:'备注:'} 
+                            	 
+                            	 ]},{xtype:'textarea',padding:10,fieldLabel:'备注',name:'bb',minWidth:280,anchor:'80%'} 
                             	 ],
-                            	 buttons:[{text:'提交',padding:8,autoRender:true},{text:'重置'}]
+                              	buttons:[{text:'提交',handler:function(field){
+                            		var form =Ext.getCmp('nodeReg').form;
+                            		if(form.isValid()){
+                            			form.submit({
+                            				url:'regAction!nodeReg.action',	
+                            				method:'post',
+                            				params:{
+                            				RegType:'node',
+                            				
+                            			},
+                            				success:function(form,action){
+                            				console.log(action);
+                            			},
+                            				failure:function(form,action){
+                            				console.log(action);
+                            				
+                            				},
+                            			});
+                            			
+                            		}
+                            		
+                            		}
+                            	},
+                            	         {text:'重置',handler:function(){Ext.getCmp('nodeReg').getForm().reset();}}]
                 }]       
             }
                     },{
-             
+                    	expanded: false,
                 items: {
                         title: '传感器注册',
                         
-                        
+                      
                         tabTip: 'Configuration tabtip',
                         style: 'padding: 10px',
                         border: false,
                         autoScroll:true,
-                       // overflowY:'auto',
-                       // overflowX:'auto',
-                    // html:"'*'为必填栏目",
                         items:[{
                         	xtype:'form',
                         	id:'sensorReg',
                         	title:'传感器注册',
+                        	html:tip,
                         	bodyPadding:10,
                         	autoScroll:true,
                       		defaultType:'textfield',
@@ -287,63 +376,84 @@ function ZhuCe()//注册功能
                         	labelWidth: 100,
                         },
                         	defaults:{
-                        	expanded: false,
-                        	allowBlank:false,	
+                        	expanded: false,	
                         	style:"margin-left:10px;"
                         },       
                         	items:[
-                        	    
                                  {
-                                    	 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                                    	{xtype:'textfield',anchor:'80%',fieldLabel:'传感器名称:'},
-                                    	{xtype:'combobox',
-                                    	fieldLabel:'传感器类型:',
-                                    	anchor:'80%',
-                                    	store:sensorName,
-                                    	value:'温度',
-                                    	autoSelect:true,
-                                    	mode:'local',
-                                    	id:'sensorName',
-                                    	name:'NTID'}
-                                    	 ]},
-                                    	 {
-                                    		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                                    	{xtype:'textfield',fieldLabel:'传感器描述信息:',name:'wlms'},{xtype:'textfield',fieldLabel:'生产厂商:'}
-                                    	 ]},                        	 
-                                    	 {
-                                    		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                                    	{xtype:'textfield',fieldLabel:'转换公式参数列表:',name:'lxdh',},{xtype:'textfield',fieldLabel:'规格型号与版本:'}
+                                  xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
+                                 {xtype:'textfield',anchor:'80%',fieldLabel:'传感器名称:',name:'cgqmc',afterLabelTextTpl:star},
+                                 {xtype:'combobox',
+                                 fieldLabel:'传感器类型:',
+                                 anchor:'80%',
+                                 afterLabelTextTpl:star,
+                                 store:sensorName,
+                                 value:'温度',
+                                 autoSelect:true,
+                                 mode:'local',
+                                 id:'sensorName',
+                                 name:'cgqlx'
+                                	 }
+                                   ]},
+                                   {
+                                     xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
+                                    {xtype:'textfield',fieldLabel:'传感器描述信息',name:'cgqmsxx'}
+                                    ,{xtype:'textfield',fieldLabel:'生产厂商',name:'sccs'}
+                                    ]},                        	 
+                                    {
+                                     xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
+                                    	{xtype:'textfield',fieldLabel:'转换公式参数列表',name:'zhgscslb',}
+                                    	,{xtype:'textfield',fieldLabel:'规格型号与版本',name:'ggxhybb'}
                                     	 ]}, 
                                     	 {
                                     	 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                                    	{xtype:'textfield',fieldLabel:'计量单位:',name:'lxdh',},{xtype:'textfield',fieldLabel:'转换公式:'}]
+                                    	{xtype:'textfield',fieldLabel:'计量单位',name:'jldw',}
+                                    	,{xtype:'textfield',fieldLabel:'转换公式',name:'zhgs'}]
                                     	},
                                     	{
                                        	 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                                       	{xtype:'textfield',fieldLabel:'精度:',name:'lxdh',},{xtype:'textfield',anchor:'20%',fieldLabel:'数据最大值:'}]
+                                       	{xtype:'textfield',fieldLabel:'精度',name:'jd',}
+                                       	,{xtype:'textfield',anchor:'20%',fieldLabel:'数据最大值',name:'sjzdz'}]
                                        	},
                                     	{
                                           xtype:'container', anchor:'20%',layout:'hbox',defaults:{padding:8},items:[
-                                         {xtype:'textfield',fieldLabel:'数据最小值:',name:'lxdh',}]
+                                         {xtype:'textfield',fieldLabel:'数据最小值',name:'sjzxz',vtype:'number'}]
                                         },
                              ],
-                        	buttons:[{text:'提交',autoRender:true},{text:'重置'}]
-                        }]       
+                           	buttons:[{text:'提交',handler:function(field){
+                        		var form =Ext.getCmp('sensorReg').form;
+                        		if(form.isValid()){
+                        			form.submit({
+                        				url:'regAction!sensorReg.action',	
+                        				method:'post',
+                        				params:{
+                        				RegType:'node',
+                        				
+                        			},
+                        				success:function(form,action){
+                        				console.log(action);
+                        			},
+                        				failure:function(form,action){
+                        				console.log(action);
+                        				
+                        				},
+                        			});
+                        		}
+                        		}
+                        },{text:'重置',handler:function(){Ext.getCmp('nodeReg').getForm().reset();}}] 
+                    }] 
                     }
-                    }
-            ]
         }]
-
-	
+                      }]
 	                })
-	            	var w = Ext.getCmp('buttomGrid');
+	                var w = Ext.getCmp('buttomGrid');
+	            	//var g=Ext.getCmp('eastPanel');
 	            	w.collapse(); 
-	            
-	            	centerPanel.setActiveTab("subscribeTab");
-	            	
-	            	
-            	}
-            	
+	            	//g.collapse();
+	            	 centerPanel.setActiveTab( "subscribeTab" ) ;	            	
+	            	 Ext.getCmp("fds").setActiveTab("zwzc");
+	            	 Ext.getCmp("fds").setActiveTab("wlzc");	            	 
+            	}        	
         }
 
 function NodeAdd(){
@@ -353,10 +463,6 @@ function NodeAdd(){
         }   
 	});
 }
-/*
- * 
- * 该区域提供comboBox的各种数据来源
- */
 
 function netStore(){
 	var subNet=new Array();
@@ -366,13 +472,15 @@ function netStore(){
 	}
 	return subNet;
 }
-
+ var jrfs=new Ext.data.ArrayStore({//子网注册接入方式
+	 fields:['value','text'],
+  	data:[['0','TCP/IP'],['1','UDP']],
+  	
+  });
+ jrfs.load();
+                                                                  
 var sensorName=new Ext.data.ArrayStore({
 		fields:['text'],
 		data:[['温度'],['湿度'],['各种度']],
-})
+});
 sensorName.load();
-
-
-	
-
