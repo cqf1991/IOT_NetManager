@@ -3,13 +3,16 @@ package com.iotNM.action;
 import org.xvolks.jnative.exceptions.NativeException;
 
 import com.iotNM.common.Client;
+import com.iotNM.common.Struts2Utils;
 import com.iotNM.common.javaCallDll;
 import com.iotNM.entity.reg.NET;
+import com.iotNM.entity.reg.SUBNET;
 import com.opensymphony.xwork2.ActionSupport;
 
 
 public class regAction extends ActionSupport {
 	
+	private int wlid;
 	private String wlmc;//wlmc&netId
 	private String wlms;
 	private String whdw;
@@ -22,12 +25,12 @@ public class regAction extends ActionSupport {
 	private float fgfwysjd;
 	private float fgfwyxjd;
 	private String bz;
-	private String zwbh;
+	private int zwbh;
 	private String zwmc;
 	private String zwms;
 	private String zwdz;
-	private String gzxd;
-	private String gzzq;
+	private int gzxd;
+	private int gzzq;
 	private String jrfs;
 	private String fsgl;
 	private String sccs;
@@ -49,29 +52,32 @@ public class regAction extends ActionSupport {
 	private String sjzxz;
 	
 	
-	@Override
-	public String execute() throws Exception {
-		// TODO Auto-generated method stub
-		return super.execute();
-	}
-	public String netReg() throws NativeException {
-		NET anetreg=new NET(wlmc,wlms,dd,ssdw,whdw,lxr,lxdh,bz,fgfwzsjd,fgfwzxjd,fgfwysjd,fgfwyxjd,-1);
-		Client aclient=new Client();
-		aclient.sendMsg(2, anetreg);
-		return SUCCESS;
+
+	public void netReg() throws NativeException {
+		NET anetreg=new NET(wlmc,wlms,dd,ssdw,whdw,lxr,lxdh,bz,fgfwzsjd,fgfwzxjd,fgfwysjd,fgfwyxjd,49);
+		new Client().sendMsg(2, anetreg);
+		Struts2Utils.renderText("SUCCESS");
+		
 
 	}
-	public String subNetReg() {
-		return SUCCESS;
+	public void subNetReg() {
+		SUBNET asubnetReg=new SUBNET(wlid,zwbh,zwmc,zwms,zwdz,gzxd,gzzq,jrfs,bz,fgfwzsjd,fgfwzxjd,fgfwysjd,fgfwyxjd,49);
+
 
 	}
-	public String nodeReg() {
-		return SUCCESS;
+	public void nodeReg() {
+
 
 	}
-	public String sensorReg() {
-		return SUCCESS;
+	public void sensorReg() {
+	
 
+	}
+	public int getWlid() {
+		return wlid;
+	}
+	public void setWlid(int wlid) {
+		this.wlid = wlid;
 	}
 	public String getWlmc() {
 		return wlmc;
@@ -145,10 +151,10 @@ public class regAction extends ActionSupport {
 	public void setBz(String bz) {
 		this.bz = bz;
 	}
-	public String getZwbh() {
+	public int getZwbh() {
 		return zwbh;
 	}
-	public void setZwbh(String zwbh) {
+	public void setZwbh(int zwbh) {
 		this.zwbh = zwbh;
 	}
 	public String getZwmc() {
@@ -169,16 +175,16 @@ public class regAction extends ActionSupport {
 	public void setZwdz(String zwdz) {
 		this.zwdz = zwdz;
 	}
-	public String getGzxd() {
+	public int getGzxd() {
 		return gzxd;
 	}
-	public void setGzxd(String gzxd) {
+	public void setGzxd(int gzxd) {
 		this.gzxd = gzxd;
 	}
-	public String getGzzq() {
+	public int getGzzq() {
 		return gzzq;
 	}
-	public void setGzzq(String gzzq) {
+	public void setGzzq(int gzzq) {
 		this.gzzq = gzzq;
 	}
 	public String getJrfs() {
@@ -295,5 +301,6 @@ public class regAction extends ActionSupport {
 	public void setSjzxz(String sjzxz) {
 		this.sjzxz = sjzxz;
 	}
+	
 	
 }

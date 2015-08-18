@@ -11,7 +11,7 @@ import com.iotNM.entity.reg.SENSOR;
 import com.iotNM.entity.reg.SUBNET;
 
 public class Client {
-	Socket sk = null;
+	static Socket sk = null;
 
 	public Client() {
 
@@ -60,11 +60,12 @@ public class Client {
 			case 5://send reg sensor msg
 				abyte = registSensorMsg(msg);
 				osOutputStream = sk.getOutputStream();
-				osOutputStream.write(abyte);
+				osOutputStream.write(abyte);				
 				break;
 			default:
-				break;
+				break;			
 			}
+			sk.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
