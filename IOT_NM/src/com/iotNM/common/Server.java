@@ -25,6 +25,7 @@ public class Server extends Thread {
 				sk = server.accept();
 				ServerThread th = new ServerThread(sk,DLLpath);
 				th.start();
+				th.join();//java thread join();
 				sleep(1000);
 				server.close();
 			} catch (Exception e) {

@@ -127,7 +127,8 @@ public class Client {
 
 	public static void main(String[] args) {
 		NET anet = new NET("abc", "abc", "abc", "abc", "abc", "abc", "abc",
-				"abc", 123, 323, 31, 32, 49);
+				"abc", 28.0, 28.8, 28.88, 28.888, 49);
 		new Client().sendMsg(2, anet);
+		
 	}
 }

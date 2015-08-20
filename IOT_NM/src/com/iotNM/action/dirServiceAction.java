@@ -40,32 +40,15 @@ public class dirServiceAction extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
 	
-		new Server(4031,"C:\\ClientDll.dll").start();
+		Server aServer=new Server(4031,"C:\\ClientDll.dll");
+		aServer.start();	
 		Client aclient=new Client();
 		aclient.sendMsg(1,null);
-		
-		if(dirMsg!="")//第一次数据会出问题，第一次直接就是空 因为线程在运行  把client取消用线程实现试试
-		{
-			String textValue=createNavTree(dirMsg);
-			Struts2Utils.renderJson(textValue);//有问题
-	
-		}
+		aServer.join();
+		String textValue=createNavTree(dirMsg);
+		Struts2Utils.renderJson(textValue);//有问题
 		System.out.println("123");
 		return null;
-	}
-	public void getDIR() throws NativeException
-	{
-		new Server(4031,"C:\\ClientDll.dll").start();
-		Client aclient=new Client();
-		aclient.sendMsg(1,null);
-		
-		if(dirMsg!="")//第一次数据会出问题，第一次直接就是空 因为线程在运行  把client取消用线程实现试试
-		{
-			String textValue=createNavTree(dirMsg);
-			Struts2Utils.renderText(textValue);//有问题
-	
-		}
-		System.out.println("123");
 	}
 
 	public String createNavTree(String comMsg) {

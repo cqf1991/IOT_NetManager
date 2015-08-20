@@ -16,13 +16,13 @@ public class NET {
 	private String strPhone;
 	
 	private String strMemo;
-	private float fCvrg_LB_X;
+	private double fCvrg_LB_X;
 	
-	private float fCvrg_LB_Y;
+	private double fCvrg_LB_Y;
 	
-	private float fCvrg_RU_X;
+	private double fCvrg_RU_X;
 	
-	private float fCvrg_RU_Y;
+	private double fCvrg_RU_Y;
 	
 	private int nAppId;
 	
@@ -33,10 +33,11 @@ public class NET {
 	}
 
 
+
 	public NET(String strNetName, String strNetDescrption, String strAddress,
 			String strOrganUnit, String strRepUnit, String strLinkMan,
-			String strPhone, String strMemo, float fCvrg_LB_X,
-			float fCvrg_LB_Y, float fCvrg_RU_X, float fCvrg_RU_Y, int nAppId) {
+			String strPhone, String strMemo, double fCvrg_LB_X,
+			double fCvrg_LB_Y, double fCvrg_RU_X, double fCvrg_RU_Y, int nAppId) {
 		super();
 		this.strNetName = strNetName;
 		this.strNetDescrption = strNetDescrption;
@@ -52,6 +53,7 @@ public class NET {
 		this.fCvrg_RU_Y = fCvrg_RU_Y;
 		this.nAppId = nAppId;
 	}
+
 
 
 	public String getStrNetName() {
@@ -150,49 +152,49 @@ public class NET {
 
 
 
-	public float getfCvrg_LB_X() {
+	public double getfCvrg_LB_X() {
 		return fCvrg_LB_X;
 	}
 
 
 
-	public void setfCvrg_LB_X(float fCvrg_LB_X) {
+	public void setfCvrg_LB_X(double fCvrg_LB_X) {
 		this.fCvrg_LB_X = fCvrg_LB_X;
 	}
 
 
 
-	public float getfCvrg_LB_Y() {
+	public double getfCvrg_LB_Y() {
 		return fCvrg_LB_Y;
 	}
 
 
 
-	public void setfCvrg_LB_Y(float fCvrg_LB_Y) {
+	public void setfCvrg_LB_Y(double fCvrg_LB_Y) {
 		this.fCvrg_LB_Y = fCvrg_LB_Y;
 	}
 
 
 
-	public float getfCvrg_RU_X() {
+	public double getfCvrg_RU_X() {
 		return fCvrg_RU_X;
 	}
 
 
 
-	public void setfCvrg_RU_X(float fCvrg_RU_X) {
+	public void setfCvrg_RU_X(double fCvrg_RU_X) {
 		this.fCvrg_RU_X = fCvrg_RU_X;
 	}
 
 
 
-	public float getfCvrg_RU_Y() {
+	public double getfCvrg_RU_Y() {
 		return fCvrg_RU_Y;
 	}
 
 
 
-	public void setfCvrg_RU_Y(float fCvrg_RU_Y) {
+	public void setfCvrg_RU_Y(double fCvrg_RU_Y) {
 		this.fCvrg_RU_Y = fCvrg_RU_Y;
 	}
 
@@ -207,6 +209,9 @@ public class NET {
 	public void setnAppId(int nAppId) {
 		this.nAppId = nAppId;
 	}
+
+
+	
 
 
 
