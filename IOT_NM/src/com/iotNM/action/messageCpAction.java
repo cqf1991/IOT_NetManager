@@ -69,7 +69,6 @@ public class messageCpAction extends ActionSupport {
 						socket = server.accept();
 						
 						InputStream is = null;
-						int packageNum = 0;
 						try {
 							is = socket.getInputStream();
 						} catch (IOException e) {

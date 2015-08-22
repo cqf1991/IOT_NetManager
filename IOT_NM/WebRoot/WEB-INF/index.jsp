@@ -20,7 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <style type="text/css">
     #center2{height:100%;width:100%;float:left;border-right:2px solid #bcbcbc;}
 </style>
-
+<script type="text/javascript" src="./js/IOTNM_JS/Commands.js" charset="GB2312"></script>
 <script type="text/javascript" src="./js/IOTNM_JS/Register.js" charset="GB2312"></script>
 <script type="text/javascript" src="./js/IOTNM_JS/BDMap.js" charset="GB2312"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xa6IlSTZtjDqZ8MKw3AU2lN5" ></script>
@@ -265,17 +265,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                            // stick any markup in a menu
                            //'<b class="menu-title">Choose a Theme</b>',
                            {
-                               text: '节点探测'
+                               text: '节点探测',id:'jdtc',handler:function(){Ext.getCmp("NP")?false:nodeProbe();} ,
                            }, {
-                               text: '节点感值数据汇报'
+                               text: '节点采集参数设置',id:'jdcjcssz',handler:function(){Ext.getCmp("NPA")?false:nodeParamsAcquisition()},
                            }, {
-                               text: '节点采集参数设置'
+                               text: '节点邻居探测',id:'jdljtc',handler:function(){Ext.getCmp("NNP")?false:nodeNeighborProbe()},
                            }, {
-                               text: '节点邻居探测'
+                               text: '节点链路测试',id:'jdllcs',handler:function(){Ext.getCmp("NLT")?false:nodeLinkTest()},
                            }, {
-                               text: '节点链路测试'
-                           }, {
-                               text: '节点功率设置'
+                               text: '节点功率设置',id:'jdglsz',handler:function(){Ext.getCmp("NPS")?false:nodePowSetting()},
                            }
                        ]
                    }
