@@ -91,7 +91,7 @@ public class javaCallDll {
 	public static byte[] JAVA_Register_SubNet(SUBNET asubNetMsg)throws NativeException {
 		  JNative.setLoggingEnabled(true);  
 	        try {  
-	            JNative getUrl = new JNative("C:\\IOTRegServiceDll.dll", "NetRegMessageBuilder"); //创建 getUrl 方法的<span style="font-family: Arial, Helvetica, sans-serif;">JNative对象</span>  
+	            JNative getUrl = new JNative("C:\\IOTRegServiceDll.dll", "SubnetRegMessageBuilder"); //创建 getUrl 方法的<span style="font-family: Arial, Helvetica, sans-serif;">JNative对象</span>  
 	            Pointer returnPointer=new Pointer(MemoryBlockFactory.createMemoryBlock(2048));
 	            getUrl.setRetVal(Type.INT); //设置返回值类型为：INT  
 	            getUrl.setParameter(0, asubNetMsg.getnNetId()); //按顺序设置方法需要的参数值  
@@ -111,6 +111,7 @@ public class javaCallDll {
 	            getUrl.setParameter(14, returnPointer);
 	            getUrl.invoke(); //调用方法
 	            byte[] getBytes=returnPointer.getMemory();
+	            returnPointer.dispose();
 	            System.out.println(getUrl.getRetVal()); //输出返回值
 	            return getBytes; 
 	        } catch (IllegalAccessException e) {  

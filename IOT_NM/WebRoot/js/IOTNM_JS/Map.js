@@ -25,6 +25,7 @@ var Nets;
 
 
 function dataChange(Nets){
+	console.log(Nets);
 
 	for(var i in Nets.NET)
 	{
@@ -231,7 +232,7 @@ function initMap(Nets)
 		Map.addControl(new BMap.OverviewMapControl());    //缩略地图控件
 		Map.addControl(new BMap.MapTypeControl());//地图类型控件
 
-		dataChange(Nets);
+		//dataChange(Nets);
 		Map.enableDoubleClickZoom();//双击放大
 		CurrentIcons = new Hashtable();//当前地图上显示的图标
 		CurrentMsgs = new Array();//当前地图上显示的拓扑消息画线

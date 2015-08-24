@@ -2,6 +2,7 @@
 var subnet=new Array();
 var node=new Array();
 var sensor=new Array();
+var subCombo=new Array();
 var tip="带<font color=red>*</font>为必填项";
 var star="<font color=red>*</font>";
 var langitude=/^(-?((180)|(((1[0-7]\d)|(\d{1,2}))(\.\d+)?)))$/g;
@@ -88,8 +89,8 @@ function ZhuCe()//注册功能
                     	 ]},
                     	 {
                     		 xtype:'container', layout:'hbox',defaults:{padding:8},items:[
-                    	{xtype:'textfield',id:'fgysjd',fieldLabel:'覆盖范围右上点经度',name:'fgfwysjd',regexText:'请输入正确的经度格式'}
-                    	,{xtype:'textfield',id:'fgyxjd',fieldLabel:'覆盖范围右下点经度',name:'fgfwyxjd',regexText:'请输入正确的纬度格式'}
+                    	{xtype:'textfield',id:'fgysjd',fieldLabel:'覆盖范围右上点纬度',name:'fgfwysjd',regexText:'请输入正确的经度格式'}
+                    	,{xtype:'textfield',id:'fgyxjd',fieldLabel:'覆盖范围右下点纬度',name:'fgfwyxjd',regexText:'请输入正确的纬度格式'}
                     	 ]} 
                     	 ]},{xtype:'textarea',name:'bz',fieldLabel:'备注',minWidth:280,anchor:'80%'}
                     	 
@@ -104,8 +105,9 @@ function ZhuCe()//注册功能
                     				RegType:'net',
                     				
                     			},
-                    				success:function(form,action){
+                    				success:function(response){
                     				console.log(action);
+                    				alert("网络注册成功"+response);
                     			},
                     				failure:function(form,action){
                     				console.log(action);
@@ -159,7 +161,7 @@ function ZhuCe()//注册功能
                         	id:'NetOfSubReg',
                         	name:'wlmc',
                         	emptyText:'请选择网络',
-                        	store:netStore(),
+                        	store:Combostore(),
                         	},{xtype:'textfield',name:'zwbh',allowBlank:false,fieldLabel:'子网编号',regex:/^[0-9]{1,3}$/,regexText:'输入0~3位数字',afterLabelTextTpl:star}
                         	 ]},
                         	 {
@@ -170,7 +172,7 @@ function ZhuCe()//注册功能
                         	 {
                         		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
                         	{xtype:'textfield',name:'zwdz',fieldLabel:'子网地址',allowBlank:false,name:'lxdh',afterLabelTextTpl:star,vtype:'IPaddress'}
-                        	,{xtype:'textfield',name:'gzxd',fieldLabel:'工作信道'}
+                        	,{xtype:'textfield',name:'gzxd',fieldLabel:'工作信道',regex:/^[0-9]{1,3}$/,regexText:'输入0~3位数字'}
                         	 ]},   
                         	 {layout:'hbox',xtype:'fieldcontainer',anchor:'80%',items:[
                           	 {layout:'hbox',xtype:'fieldcontainer',minWidth:230,defaults:{padding:8},
@@ -184,16 +186,16 @@ function ZhuCe()//注册功能
                         		 xtype:'fieldset',title:'覆盖范围经纬度',anchor:'80%',items:[
                         	 {
                         		 xtype:'container',layout:'hbox',defaults:{padding:8},items:[
-                        	{xtype:'textfield',fieldLabel:'覆盖范围左上点经度',name:'fgfwzsjd',regex:langitude,regexText:'请输入正确的经度格式'}
-                        	,{xtype:'textfield',fieldLabel:'覆盖范围左下点经度',name:'fgfwzxwd',regex:latitude,regexText:'请输入正确的经度格式'}
+                        	{xtype:'textfield',fieldLabel:'覆盖范围左上点经度',name:'fgfwzsjd',regexText:'请输入正确的经度格式'}
+                        	,{xtype:'textfield',fieldLabel:'覆盖范围左下点经度',name:'fgfwzxwd',regexText:'请输入正确的经度格式'}
                         	 ]},
                         	 {
                         		 xtype:'container', layout:'hbox',defaults:{padding:8},items:[
-                        	{xtype:'textfield',fieldLabel:'覆盖范围右上点经度',name:'fgfwysjd',regex:langitude,regexText:'请输入正确的经度格式'}
-                        	,{xtype:'textfield',fieldLabel:'覆盖范围右下点经度',name:'fgfwyxwd',regex:latitude,regexText:'请输入正确的经度格式'}
+                        	{xtype:'textfield',fieldLabel:'覆盖范围右上点纬度',name:'fgfwysjd',regexText:'请输入正确的经度格式'}
+                        	,{xtype:'textfield',fieldLabel:'覆盖范围右下点纬度',name:'fgfwyxwd',regexText:'请输入正确的经度格式'}
                         	 ]} 
                         	 ]
-                        	 }],
+                        	 },{xtype:'textarea',name:'bz',fieldLabel:'备注',minWidth:280,anchor:'80%'}],
                          	buttons:[{text:'提交',handler:function(field){
                         		var form =Ext.getCmp('subnetReg').form;
                         		if(form.isValid()){
@@ -254,35 +256,35 @@ function ZhuCe()//注册功能
                             	allowBlank:false,
                             	fieldLabel:'网络名称:',
                             	id:'netStore',
-                            	emptyText:'请选择网络',
-                            	store:netStore(),   	                	
-                            	name:'wlmc',
-                            	
-                            	hiddenName:'value',
+                            	emptyText:'请选择网络',                      	
+                            	store: Combostore(),
+                            	name:'wlmc',                      
                             	listeners:{'select':function(combo,rec){ 
                             			var val=combo.getValue();
-                            			var subStore=new Array();
                             			var ss=Ext.getCmp('subnetStore');
-                            			var v=Ext.getCmp('value');
                             			for(var index in net)
-                            				if((net[index].NTID+"号网络")==val){
+                            				if((net[index].NTID)==val){
+                       					
                             					if(net[index].SUBNET!=null){
-                            						subStore=[];
-                            						console.log(rec);
-                            						console.log(combo);
+                            						subStoreV=[]; 
+                            						subStoreD=[];
+                            					
+                            						var subarray=new Array(); 
                             						ss.setValue('请选择子网');
-                            						for(var i in net[index].SUBNET){ 
-                            							var subarray=new Array();                            							
-                            							subarray.push(net[index].SUBNET[i].SBNTID+"号子网");
-          
-                            						 	subStore.push(subarray);
-                            						}
-                            						ss.store.loadData(subStore);			
+                            						for(var i in net[index].SUBNET){		                           							
+                            							subStoreD.push(net[index].SUBNET[i].SBNTID+"号子网");
+                            							subStoreV.push(net[index].SUBNET[i].SBNTID.toString());
+                            							subarray[i]=[subStoreD[i],subStoreV[i]];
+                            							
+                            						}                        						
                             						
+                            						ss.getStore().proxy.data=subarray;
+                            					 
                             					}else{
-                            						subStore=[];
-                            						ss.store.loadData(subStore);
+                            						subarray=[];
+                            						ss.store.loadData(subarray);
                             						ss.setValue('此网络无子网');
+                            						
                             					}         				                          					
                             				}                     			
                             	}}
@@ -294,21 +296,27 @@ function ZhuCe()//注册功能
                              	emptyText:'请选择子网',
                              	id:'subnetStore',
                              	name:'zwmc',
+                             	mode:'local',
                              	allowBlank:false,
+                             	valueField:'value',
+                             	displayField:'key',
                             	fieldLabel:'子网名称:',
-                            	store: []                  	       	
+                            	store:  new Ext.data.SimpleStore({
+                                    fields: ['key', 'value'],
+                                    data : [],
+                                }),                 	       	
                              	}
                             	 ]},
                             	 {
                             		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
                             	{xtype:'textfield',fieldLabel:'发射功率',name:'fsgl',vtype:'alphanum'}
-                            	,{xtype:'textfield',fieldLabel:'生产厂商',name:'sccs',vtype:'alphanum'}
+                            	,{xtype:'textfield',fieldLabel:'生产厂商',name:'sccs'}
                             	 ]},                
 
                             	 {layout:'hbox',xtype:'fieldcontainer',anchor:'80%',items:[
                             	 {xtype:'textfield',fieldLabel:'规格型号和软件版本',name:'ggxhhrjbb'},                                                        
                              	  {layout:'hbox',xtype:'fieldcontainer',anchor:'80%',defaults:{padding:8},items:[
-                             	  {fieldLabel:'节点类型',xtype:'combobox',name:'jdlx',afterLabelText:star}
+                             	  {fieldLabel:'节点类型',xtype:'combobox',name:'jdlx',afterLabelText:star,regex:/^[0-9]{1,3}$/,regexText:'输入0~3位数字',}
                              	  ,{xtype:'button',text:'添加',handler:NodeAdd,autoRender:true}]
                              	  },
                              	 ]},
@@ -319,8 +327,8 @@ function ZhuCe()//注册功能
                             	 ]},
                             	 {
                             		 xtype:'container',layout:'hbox',anchor:'80%',defaults:{padding:8},items:[
-                            	{xtype:'textfield',fieldLabel:'节点位置经度',name:'jdwzjd',regex:langitude,regexText:'请输入正确的经度格式'}
-                            	,{xtype:'textfield',fieldLabel:'节点位置纬度',name:'jdwzwd',regex:latitude,regexText:'请输入正确的纬度格式'}
+                            	{xtype:'textfield',fieldLabel:'节点位置经度',name:'jdwzjd',regexText:'请输入正确的经度格式'}
+                            	,{xtype:'textfield',fieldLabel:'节点位置纬度',name:'jdwzwd',regexText:'请输入正确的纬度格式'}
                             	 ]},
                             	 {
                             	 xtype:'container', layout:'hbox',anchor:'80%',defaults:{padding:8},items:[
@@ -329,6 +337,8 @@ function ZhuCe()//注册功能
                             	 ],
                               	buttons:[{text:'提交',handler:function(field){
                             		var form =Ext.getCmp('nodeReg').form;
+                            		
+                					
                             		if(form.isValid()){
                             			form.submit({
                             				url:'regAction!nodeReg.action',	
@@ -338,10 +348,10 @@ function ZhuCe()//注册功能
                             				
                             			},
                             				success:function(form,action){
-                            				console.log(action);
+                            				
                             			},
                             				failure:function(form,action){
-                            				console.log(action);
+                            			
                             				
                             				},
                             			});
@@ -382,11 +392,12 @@ function ZhuCe()//注册功能
                         	items:[
                                  {
                                   xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                                 {xtype:'textfield',anchor:'80%',fieldLabel:'传感器名称:',name:'cgqmc',afterLabelTextTpl:star},
+                                 {xtype:'textfield',anchor:'80%',fieldLabel:'传感器名称:',name:'cgqmc',afterLabelTextTpl:star,allowBlank:false},
                                  {xtype:'combobox',
                                  fieldLabel:'传感器类型:',
                                  anchor:'80%',
                                  afterLabelTextTpl:star,
+                                 allowBlank:false,
                                  store:sensorName,
                                  value:'温度',
                                  autoSelect:true,
@@ -417,7 +428,7 @@ function ZhuCe()//注册功能
                                        	},
                                     	{
                                           xtype:'container', anchor:'20%',layout:'hbox',defaults:{padding:8},items:[
-                                         {xtype:'textfield',fieldLabel:'数据最小值',name:'sjzxz',vtype:'number'}]
+                                         {xtype:'textfield',fieldLabel:'数据最小值',name:'sjzxz',regex:/^[0-9]{1,3}$/,regexText:'输入0~3位数字',}]
                                         },
                              ],
                            	buttons:[{text:'提交',handler:function(field){
@@ -463,15 +474,23 @@ function NodeAdd(){
         }   
 	});
 }
-
-function netStore(){
-	var subNet=new Array();
-	for(var i in net)
-	{
-		subNet.push(net[i].NTID+"号网络");
-	}
-	return subNet;
+function Combostore(){
+	var subNetD=new Array();
+	var subNetV=new Array();
+	var array=new Array();
+	for(var i in net){
+		subNetD.push(net[i].NTID+"号网络");
+		subNetV.push(net[i].NTID.toString());
+		array[i]=[ subNetV[i],subNetD[i]];
+	}	 
+	return array;
 }
+
+
+
+
+
+
  var jrfs=new Ext.data.ArrayStore({//子网注册接入方式
 	 fields:['value','text'],
   	data:[['0','TCP/IP'],['1','UDP']],
@@ -481,6 +500,6 @@ function netStore(){
                                                                   
 var sensorName=new Ext.data.ArrayStore({
 		fields:['text'],
-		data:[['温度'],['湿度'],['各种度']],
+		data:[['温度'],['湿度']],
 });
 sensorName.load();

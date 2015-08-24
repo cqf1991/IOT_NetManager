@@ -12,7 +12,6 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class regAction extends ActionSupport {
 	
-	private int wlid;
 	private String wlmc;//wlmc&netId
 	private String wlms;
 	private String whdw;
@@ -56,12 +55,14 @@ public class regAction extends ActionSupport {
 	public void netReg() throws NativeException {
 		NET anetreg=new NET(wlmc,wlms,dd,ssdw,whdw,lxr,lxdh,bz,fgfwzsjd,fgfwzxjd,fgfwysjd,fgfwyxjd,49);
 		new Client().sendMsg(2, anetreg);
-		Struts2Utils.renderText("SUCCESS");
+		Struts2Utils.renderText("成功");
 		
 
 	}
 	public void subNetReg() {
-		SUBNET asubnetReg=new SUBNET(wlid,zwbh,zwmc,zwms,zwdz,gzxd,gzzq,jrfs,bz,fgfwzsjd,fgfwzxjd,fgfwysjd,fgfwyxjd,49);
+		SUBNET asubnetReg=new SUBNET(Integer.parseInt(wlmc),zwbh,zwmc,zwms,zwdz,gzxd,gzzq,jrfs,bz,fgfwzsjd,fgfwzxjd,fgfwysjd,fgfwyxjd,49);
+		new Client().sendMsg(3, asubnetReg);
+		Struts2Utils.renderText("SUCCESS");
 
 
 	}
@@ -73,12 +74,7 @@ public class regAction extends ActionSupport {
 	
 
 	}
-	public int getWlid() {
-		return wlid;
-	}
-	public void setWlid(int wlid) {
-		this.wlid = wlid;
-	}
+
 	public String getWlmc() {
 		return wlmc;
 	}

@@ -82,6 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	    	        expanded: false,
 	 	    	        children:jsonString
 	 	    	    }
+	 	    	    
 	 	     });	 
 	 	    	var tree123=Ext.create('Ext.tree.Panel', {
 	 	    	    title: '网络结构',
@@ -94,6 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	    	Ext.getCmp('west-panel').doLayout();
 	 	    	
 	 	       var treeitem = Ext.getCmp('navTreeID');
+	 	       mapRequest();
 	             //目录树单击事件
 	           treeitem.on('itemclick',function(view, rcd, item, idx, event, eOpts) {
 	                    console.log(item);
@@ -101,14 +103,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	              });			 	    	
 	 	    }
 	 	});
+function mapRequest(){
 	  Ext.Ajax.request({
 	 	    url: 'mapAction',
 	 	    success: function(response){
-	 	        Nets = Ext.JSON.decode(response.responseText).IOT_DIR.NETS[0];//[{ text: "detention", leaf: true },{ text: "homework", expanded: true, children: [{ text: "book report", leaf: true },{ text: "alegrbra", leaf: true}]},{ text: "buy lottery tickets", leaf: true }];
-							
+	 	        Nets = Ext.JSON.decode(response.responseText).IOT_DIR.NETS[0];
+	 	        dataChange(Nets);
 	 	     }	 
 
 	 	});
+	}
 
 		 //messagePush.messageCP(4031);//当getString从服务器取回数据后的回调函数,data为返回的值);//端口号为参数  待完善
 		 //messagePush.getDIR();

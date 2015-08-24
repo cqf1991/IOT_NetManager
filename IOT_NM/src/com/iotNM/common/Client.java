@@ -128,7 +128,9 @@ public class Client {
 	public static void main(String[] args) {
 		NET anet = new NET("abc", "abc", "abc", "abc", "abc", "abc", "abc",
 				"abc", 28.0, 28.8, 28.88, 28.888, 49);
-		new Client().sendMsg(2, anet);
+		SUBNET aSubnet=new SUBNET(42,21,"zwmc","zwms","192.1.1.1",12,213,"TCP/IP","tt",12,32,1,2,49);	
+		
+		new Client().sendMsg(3, aSubnet);
 		
 	}
 }
