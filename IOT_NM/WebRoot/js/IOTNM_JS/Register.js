@@ -105,9 +105,10 @@ function ZhuCe()//注册功能
                     				RegType:'net',
                     				
                     			},
-                    				success:function(response){
+                    				success:function(form, action){
                     				console.log(action);
-                    				alert("网络注册成功"+response);
+                    				alert("网络注册成功");
+                    				Ext.getCmp('netReg').getForm().reset();
                     			},
                     				failure:function(form,action){
                     				console.log(action);
@@ -171,7 +172,7 @@ function ZhuCe()//注册功能
                         	 ]},                        	 
                         	 {
                         		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                        	{xtype:'textfield',name:'zwdz',fieldLabel:'子网地址',allowBlank:false,name:'lxdh',afterLabelTextTpl:star,vtype:'IPaddress'}
+                        	{xtype:'textfield',name:'zwdz',fieldLabel:'子网地址',allowBlank:false,afterLabelTextTpl:star,vtype:'IPaddress'}
                         	,{xtype:'textfield',name:'gzxd',fieldLabel:'工作信道',regex:/^[0-9]{1,3}$/,regexText:'输入0~3位数字'}
                         	 ]},   
                         	 {layout:'hbox',xtype:'fieldcontainer',anchor:'80%',items:[
@@ -208,6 +209,8 @@ function ZhuCe()//注册功能
                         			},
                         				success:function(form,action){
                         				console.log(action);
+                        				alert("子网注册成功");
+                        				Ext.getCmp('subnetReg').getForm().reset();
                         			},
                         				failure:function(form,action){
                         				console.log(action);
@@ -309,7 +312,7 @@ function ZhuCe()//注册功能
                             	 ]},
                             	 {
                             		 xtype:'container', anchor:'80%',layout:'hbox',defaults:{padding:8},items:[
-                            	{xtype:'textfield',fieldLabel:'发射功率',name:'fsgl',vtype:'alphanum'}
+                            	{xtype:'textfield',fieldLabel:'发射功率',name:'fsgl',vtype:'number'}
                             	,{xtype:'textfield',fieldLabel:'生产厂商',name:'sccs'}
                             	 ]},                
 
@@ -323,7 +326,7 @@ function ZhuCe()//注册功能
                             	 {
                             		 xtype:'container',layout:'hbox',anchor:'80%',defaults:{padding:8},items:[
                             	{xtype:'textfield',fieldLabel:'节点描述信息',name:'jdmsxx',}
-                            	,{xtype:'textfield',fieldLabel:'节点物理地址',name:'jdwldz',afterLabelText:star,vtype:'Mac'}
+                            	,{xtype:'textfield',fieldLabel:'节点物理地址',name:'jdwldz',afterLabelText:star,vtype:'number'}
                             	 ]},
                             	 {
                             		 xtype:'container',layout:'hbox',anchor:'80%',defaults:{padding:8},items:[
@@ -333,7 +336,7 @@ function ZhuCe()//注册功能
                             	 {
                             	 xtype:'container', layout:'hbox',anchor:'80%',defaults:{padding:8},items:[
                             	 
-                            	 ]},{xtype:'textarea',padding:10,fieldLabel:'备注',name:'bb',minWidth:280,anchor:'80%'} 
+                            	 ]},{xtype:'textarea',padding:10,fieldLabel:'备注',name:'bz',minWidth:280,anchor:'80%'} 
                             	 ],
                               	buttons:[{text:'提交',handler:function(field){
                             		var form =Ext.getCmp('nodeReg').form;
@@ -348,6 +351,8 @@ function ZhuCe()//注册功能
                             				
                             			},
                             				success:function(form,action){
+                            					alert("节点注册成功!");
+                            					Ext.getCmp('nodeReg').getForm().reset();
                             				
                             			},
                             				failure:function(form,action){
@@ -442,6 +447,8 @@ function ZhuCe()//注册功能
                         				
                         			},
                         				success:function(form,action){
+                        					alert("传感器注册成功!");
+                        					Ext.getCmp('sensorReg').getForm().reset();
                         				console.log(action);
                         			},
                         				failure:function(form,action){
@@ -451,7 +458,7 @@ function ZhuCe()//注册功能
                         			});
                         		}
                         		}
-                        },{text:'重置',handler:function(){Ext.getCmp('nodeReg').getForm().reset();}}] 
+                        },{text:'重置',handler:function(){Ext.getCmp('sensorReg').getForm().reset();}}] 
                     }] 
                     }
         }]

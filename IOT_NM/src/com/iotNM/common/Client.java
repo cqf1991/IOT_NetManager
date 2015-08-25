@@ -129,8 +129,10 @@ public class Client {
 		NET anet = new NET("abc", "abc", "abc", "abc", "abc", "abc", "abc",
 				"abc", 28.0, 28.8, 28.88, 28.888, 49);
 		SUBNET aSubnet=new SUBNET(42,21,"zwmc","zwms","192.1.1.1",12,213,"TCP/IP","tt",12,32,1,2,49);	
+		NODE aNode=new NODE("strDsp",12,"sccs","version",123,"bz",12,213,42,21,1,49);
+		SENSOR aSensor=new SENSOR("sensorName","sensorMS","prod","ver","unit","formula","prms","max","min","strPrecision",1,49);
 		
-		new Client().sendMsg(3, aSubnet);
+		new Client().sendMsg(5, aSensor);
 		
 	}
 }

@@ -6,6 +6,8 @@ import com.iotNM.common.Client;
 import com.iotNM.common.Struts2Utils;
 import com.iotNM.common.javaCallDll;
 import com.iotNM.entity.reg.NET;
+import com.iotNM.entity.reg.NODE;
+import com.iotNM.entity.reg.SENSOR;
 import com.iotNM.entity.reg.SUBNET;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -31,21 +33,21 @@ public class regAction extends ActionSupport {
 	private int gzxd;
 	private int gzzq;
 	private String jrfs;
-	private String fsgl;
+	private int fsgl;
 	private String sccs;
 	private String ggxhhrjbb;
 	private String jdlx;
 	private String jdmsxx;
-	private String jdwldz;
-	private String jdwzjd;
-	private String jdwzwd;
+	private int jdwldz;
+	private float jdwzjd;
+	private float jdwzwd;
 	private String cgqmc;
 	private String cgqlx;
 	private String cgqmsxx;
 	private String zhgscslb;
 	private String ggxhybb;
 	private String jldw;
-	private String zzgs;
+	private String zhgs;
 	private String jd;
 	private String sjzdz;
 	private String sjzxz;
@@ -53,24 +55,30 @@ public class regAction extends ActionSupport {
 	
 
 	public void netReg() throws NativeException {
-		NET anetreg=new NET(wlmc,wlms,dd,ssdw,whdw,lxr,lxdh,bz,fgfwzsjd,fgfwzxjd,fgfwysjd,fgfwyxjd,49);
+		NET anetreg=new NET(wlmc,wlms,dd,ssdw,whdw,lxr,lxdh,bz,fgfwzsjd,fgfwzxjd,fgfwysjd,fgfwyxjd,49);//null 和“”的问题,null提交后会崩
 		new Client().sendMsg(2, anetreg);
-		Struts2Utils.renderText("成功");
+		Struts2Utils.renderJson("{success:true}");
 		
 
 	}
 	public void subNetReg() {
 		SUBNET asubnetReg=new SUBNET(Integer.parseInt(wlmc),zwbh,zwmc,zwms,zwdz,gzxd,gzzq,jrfs,bz,fgfwzsjd,fgfwzxjd,fgfwysjd,fgfwyxjd,49);
 		new Client().sendMsg(3, asubnetReg);
-		Struts2Utils.renderText("SUCCESS");
+		Struts2Utils.renderText("{success:true}");
 
 
 	}
 	public void nodeReg() {
+		NODE anodeReg=new NODE(jdmsxx,jdwldz,sccs,ggxhhrjbb,fsgl,bz,jdwzjd,jdwzwd,Integer.parseInt(wlmc),Integer.parseInt(zwmc),1,49);//null 和“”的问题,null提交后会崩
+		new Client().sendMsg(4, anodeReg);
+		Struts2Utils.renderText("{success:true}");
 
 
 	}
 	public void sensorReg() {
+		SENSOR asensorReg=new SENSOR(cgqmc,cgqmsxx,sccs,ggxhybb,jldw,zhgs,zhgscslb,sjzdz,sjzxz,jd,1,49);
+		new Client().sendMsg(5, asensorReg);
+		Struts2Utils.renderText("{success:true}");
 	
 
 	}
@@ -189,12 +197,7 @@ public class regAction extends ActionSupport {
 	public void setJrfs(String jrfs) {
 		this.jrfs = jrfs;
 	}
-	public String getFsgl() {
-		return fsgl;
-	}
-	public void setFsgl(String fsgl) {
-		this.fsgl = fsgl;
-	}
+
 	public String getSccs() {
 		return sccs;
 	}
@@ -219,24 +222,7 @@ public class regAction extends ActionSupport {
 	public void setJdmsxx(String jdmsxx) {
 		this.jdmsxx = jdmsxx;
 	}
-	public String getJdwldz() {
-		return jdwldz;
-	}
-	public void setJdwldz(String jdwldz) {
-		this.jdwldz = jdwldz;
-	}
-	public String getJdwzjd() {
-		return jdwzjd;
-	}
-	public void setJdwzjd(String jdwzjd) {
-		this.jdwzjd = jdwzjd;
-	}
-	public String getJdwzwd() {
-		return jdwzwd;
-	}
-	public void setJdwzwd(String jdwzwd) {
-		this.jdwzwd = jdwzwd;
-	}
+	
 	public String getCgqmc() {
 		return cgqmc;
 	}
@@ -273,11 +259,12 @@ public class regAction extends ActionSupport {
 	public void setJldw(String jldw) {
 		this.jldw = jldw;
 	}
-	public String getZzgs() {
-		return zzgs;
+
+	public String getZhgs() {
+		return zhgs;
 	}
-	public void setZzgs(String zzgs) {
-		this.zzgs = zzgs;
+	public void setZhgs(String zhgs) {
+		this.zhgs = zhgs;
 	}
 	public String getJd() {
 		return jd;
@@ -296,6 +283,30 @@ public class regAction extends ActionSupport {
 	}
 	public void setSjzxz(String sjzxz) {
 		this.sjzxz = sjzxz;
+	}
+	public int getFsgl() {
+		return fsgl;
+	}
+	public void setFsgl(int fsgl) {
+		this.fsgl = fsgl;
+	}
+	public int getJdwldz() {
+		return jdwldz;
+	}
+	public void setJdwldz(int jdwldz) {
+		this.jdwldz = jdwldz;
+	}
+	public float getJdwzjd() {
+		return jdwzjd;
+	}
+	public void setJdwzjd(float jdwzjd) {
+		this.jdwzjd = jdwzjd;
+	}
+	public float getJdwzwd() {
+		return jdwzwd;
+	}
+	public void setJdwzwd(float jdwzwd) {
+		this.jdwzwd = jdwzwd;
 	}
 	
 	
