@@ -24,11 +24,20 @@ public class Client {
 
 	}
 
+	public Client(String IpAddr,int port)
+	{
+		try {
+			sk = new Socket(IpAddr, port);// 要修改为可更改端口版本
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * 向CIS发送请求
 	 * 
 	 * @param msgType
-	 *            消息类型 1:目录消息 2:注册网络 3：注册子网 4:注册节点 5:注册传感器
+	 *            消息类型 1:目录消息 2:注册网络 3：注册子网 4:注册节点 5:注册传感器 6:节点探测
 	 * @param msg
 	 *            具体的消息对象
 	 */
@@ -62,6 +71,11 @@ public class Client {
 				osOutputStream = sk.getOutputStream();
 				osOutputStream.write(abyte);				
 				break;
+			case 6:
+				byte abyteTest[]={78,84,95,67,77,68,0,0,0,0,0,0,0,0,0,0,68,0,0,0,0,-56,-79,-98,0,10,16,-99,6,0,4,0,77,83,71,84,89,80,69,0,0,0,1,0,0,0,4,0,83,85,66,84,89,80,69,0,0,0,2,0,0,0,4,0,83,84,65,84,69,80,69,0,4,0,0,0,4,0,78,84,73,68,0,0,0,0,0,0,17,0,0,0,4,0,83,66,78,84,73,68,0,0,0,0,-128,0,0,0,4,0,78,68,73,68,0,0,0,0,0,0,0,0,0,0};
+				osOutputStream=sk.getOutputStream();
+				osOutputStream.write(abyteTest);
+				
 			default:
 				break;			
 			}

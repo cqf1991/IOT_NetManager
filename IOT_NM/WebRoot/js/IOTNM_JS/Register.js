@@ -9,6 +9,7 @@ var langitude=/^(-?((180)|(((1[0-7]\d)|(\d{1,2}))(\.\d+)?)))$/g;
 var latitude=/^(-?((90)|((([0-8]\d)|(\d{1}))(\.\d+)?)))$/g;
 function ZhuCe()//注册功能
 {    
+	
         var centerPanel = Ext.getCmp("centerPanel");  //Ext.ComponentManager.get方法的简写。 通过id查找现有的Component
             	if(Ext.getCmp("subscribeTab")==null)
             	{
@@ -109,7 +110,11 @@ function ZhuCe()//注册功能
                     				console.log(action);
                     				alert("网络注册成功");
                     				Ext.getCmp('netReg').getForm().reset();
-                    			},
+                    				//loadDIR();
+                    				//initMap(Nets);
+                    				loadCombo();
+                    				
+                    				},
                     				failure:function(form,action){
                     				console.log(action);
                     				
@@ -162,7 +167,7 @@ function ZhuCe()//注册功能
                         	id:'NetOfSubReg',
                         	name:'wlmc',
                         	emptyText:'请选择网络',
-                        	store:Combostore(),
+                        	store:Combostore(),//test
                         	},{xtype:'textfield',name:'zwbh',allowBlank:false,fieldLabel:'子网编号',regex:/^[0-9]{1,3}$/,regexText:'输入0~3位数字',afterLabelTextTpl:star}
                         	 ]},
                         	 {
@@ -494,6 +499,18 @@ function Combostore(){
 }
 
 
+function loadCombo()
+{
+	 Ext.Ajax.request({
+	 	    url: 'dirService.action',
+	 	    success: function(response){
+	 	        jsonString = Ext.JSON.decode(response.responseText);
+	 	        mapRequest();
+	 	        Combostore();
+	 	        }
+	 });
+	 
+}
 
 
 

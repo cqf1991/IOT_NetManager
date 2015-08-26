@@ -90,7 +90,17 @@ function nodeProbe(){
 		    ],
 		   
 			}],
-		buttons:[{text:'确定',},{text:'取消',handler:function(){win.close();}}]	
+		buttons:[{text:'确定',handler:function(){
+			Ext.Ajax.request({
+		 	    url: 'netCmdAction!nodeDetection.action',
+		 	    success: function(response){
+		 	    	alert("节点探测命令下发成功");
+		 	    	win.close();
+		 	     }	 
+		 	});
+			}},{text:'取消',handler:function(){				
+			 	    	win.close();
+			 	     }}]	
 	}).show();	
 }
 /*
@@ -476,7 +486,17 @@ var win=Ext.create('Ext.window.Window',{
 		    ],
 		   
 			}],
-		buttons:[{text:'确定',},{text:'取消',handler:function(){win.close();}}]	
+		buttons:[{text:'确定',handler:function(){
+			Ext.Ajax.request({
+		 	    url: 'netCmdAction!nodeDetection.action',
+		 	    success: function(response){
+		 	    	alert("节点探测命令下发成功");
+		 	    	win.close();
+		 	     }	 
+		 	});
+			}},{text:'取消',handler:function(){				
+			 	    	win.close();
+			 	     }}]	
 	}).show();	
 }
 /*

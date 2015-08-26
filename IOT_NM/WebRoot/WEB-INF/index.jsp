@@ -65,12 +65,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	
 	function onPageLoad(){
-		
+		loadDIR();
 		initMap(Nets); 
 		//messagePush.messageCP(4031);
 	  	
 	  }
-//function notload(){
+function loadDIR(){
 	  Ext.Ajax.request({
 	 	    url: 'dirService.action',
 	 	    success: function(response){
@@ -103,6 +103,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	              });			 	    	
 	 	    }
 	 	});
+	 	}
 function mapRequest(){
 	  Ext.Ajax.request({
 	 	    url: 'mapAction',

@@ -26,7 +26,7 @@ var Nets;
 
 function dataChange(Nets){
 	console.log(Nets);
-
+	net=[];
 	for(var i in Nets.NET)
 	{
 		net.push(Nets.NET[i]);

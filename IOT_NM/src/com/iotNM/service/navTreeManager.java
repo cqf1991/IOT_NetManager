@@ -32,6 +32,13 @@ public class navTreeManager {
 		return "false";
 		
 	}
+	
+	
+	/**
+	 * 第二个子网的第二个节点会出现bug，json少一个逗号，待修复
+	 * @param iot
+	 * @return
+	 */
 	private String createJsonTree(IOT_DIR iot) {
 
 		String StrJson="[";
@@ -54,21 +61,21 @@ public class navTreeManager {
 					for(int m=0;m<iot.getNETS().getNET().get(i).getSUBNET().get(j).getNODE().get(k).getSENSOR().size();m++)
 					{
 						StrJson+="{text:'"+iot.getNETS().getNET().get(i).getSUBNET().get(j).getNODE().get(k).getSENSOR().get(m).getSTPNM()+"传感器"+"',leaf:true,children:[";
-						if(j==iot.getNETS().getNET().get(i).getSUBNET().get(j).getNODE().get(k).getSENSOR().size()-1)
+						if(0==iot.getNETS().getNET().get(i).getSUBNET().get(j).getNODE().get(k).getSENSOR().size()-1)
 	    					StrJson+="]}";
 		    			else {
 		    				StrJson+="]},";
 						}
 					}
 					
-					if(j==iot.getNETS().getNET().get(i).getSUBNET().get(j).getNODE().size()-1)
+					if(0==iot.getNETS().getNET().get(i).getSUBNET().get(j).getNODE().size()-1)
   					StrJson+="]}";
 	    			else {
 	    				StrJson+="]},";
 					}
 				}
 				
-				if(j==iot.getNETS().getNET().get(i).getSUBNET().size()-1)
+				if(0==iot.getNETS().getNET().get(i).getSUBNET().size()-1)
 					StrJson+="]}";
   			else {
   				StrJson+="]},";

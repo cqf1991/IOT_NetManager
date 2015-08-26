@@ -35,7 +35,7 @@ public class ComMsg {
 		int pos=30;//��¼��Ԫ����ʼλ��
 		for (int i = 0; i < KeyNum; i++) {
 			byte[] packagebody=Arrays.copyOfRange(inputMsg, pos, pos+12+byteConvert.bytesToShort(inputMsg, pos));
-			packageBody pkBody=new packageBody(packagebody);
+			packageBody pkBody=new packageBody(packagebody,i);
 			dataPackageBody.add(pkBody);
 			pos=pos+12+byteConvert.bytesToShort(inputMsg, pos);
 		}	
