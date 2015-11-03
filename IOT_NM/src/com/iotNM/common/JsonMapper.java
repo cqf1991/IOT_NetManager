@@ -34,7 +34,7 @@ import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
  * 
  * 封装不同的输出风格, 使用不同的builder函数创建实例.
  * 
- * @author 尔演&Eryan eryanwcp@gmail.com
+ * 
  */
 public class JsonMapper {
 

@@ -7,7 +7,6 @@ import java.util.Arrays;
  * @ClassName: packageBody
  * @Description: ��Ԫ��������
  * @author ���� cqf1324@vip.qq.com
- * @date 2015-1-20 ����9:45:04
  */
 public class packageBody {
 	short valueSize;

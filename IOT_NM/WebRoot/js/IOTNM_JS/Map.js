@@ -33,15 +33,15 @@ function dataChange(Nets){
 		if(net[i].SUBNET!=null)
 		for(var j in Nets.NET[i].SUBNET)
 		{
-			subnet.push(net[i].SUBNET[j]);
+			subnet.push(Nets.NET[i].SUBNET[j]);
 			if(subnet[j].NODE!=null)
 			for(var k in Nets.NET[i].SUBNET[j].NODE)
 			{
-			node.push(subnet[j].NODE[k]);
+			node.push(Nets.NET[i].SUBNET[j].NODE[k]);
 			if(node[k].SENSOR!=null)
 				for(var m in Nets.NET[i].SUBNET[j].NODE[k].SENSOR)
 				{
-					sensor.push(node[k].SENSOR[m]);	
+					sensor.push(Nets.NET[i].SUBNET[j].NODE[k].SENSOR[m]);	
 				}
 			}
 		}
@@ -132,17 +132,14 @@ function showSubnet(subnet,i)        //子网显示
 	
 	
 	var position = new BMap.Point(subnet[i].CVRG_LB_Y,subnet[i].CVRG_LB_X);
-	var netIcon = new BMap.Icon("img/node.ico",new BMap.Size(16,16));
+	var netIcon = new BMap.Icon("img/net.ico",new BMap.Size(13,13));
 	var marklabel = new BMap.Label(subnet[i].SBNTID+"号子网");
 	var marker = new BMap.Marker(position,{icon:netIcon});
-	if(Map.getZoom()<17)
-	{
+
 	Map.addOverlay(marker);
 	
 	marker.setLabel(marklabel);
-	}else{
 
-	}
 	marker.addEventListener("click",function(e){ 
 	updateGridData(subnet[i]);
 		var location= new BMap.Point(e.point.lng,e.point.lat);
@@ -164,6 +161,8 @@ function showSubnet(subnet,i)        //子网显示
 	
 function showNode(node,i) //节点显示
 	{
+  
+	
 	var index='0'; //传感器数量
 	if(node[i].SENSOR!=null)
 		index=node[i].SENSOR.length;
@@ -175,15 +174,17 @@ function showNode(node,i) //节点显示
 		}
 		points.push(point);
 	*/
-	var position = new BMap.Point(node[i].LCTN_X ,node[i].LCTN_Y);
+	var position = new BMap.Point(node[i].LCTN_Y,node[i].LCTN_X);
 
-	var netIcon = new BMap.Icon("img/node.ico",new BMap.Size(16,16));
+	var netIcon = new BMap.Icon("img/net.ico",new BMap.Size(10,10));
 	var marklabel = new BMap.Label(node[i].NDPHDR+"号节点");
 	var marker = new BMap.Marker(position,{icon:netIcon});
+	
 	Map.addOverlay(marker);
 	marker.setLabel(marklabel);
-	console.log("节点经纬度："+node[i].LCTN_X,node[i].LCTN_Y);
+	
 	marker.addEventListener("click",function(e){ //
+		
 		updateGridData(node[i]);
 		var location= new BMap.Point(e.point.lng,e.point.lat);
 		Map.panTo(location);
@@ -250,7 +251,7 @@ function initMap(Nets)
 			{
 				showNet(net,i);
 			}
-				if(OldZoomLevel<17&&currentLevel<16){//放大地图至子网
+				if(true){//放大地图至子网
 				var n=Nets.NETSIZE;
 					if(n!='0')
 					{
@@ -261,14 +262,12 @@ function initMap(Nets)
 					}else{
 						alert("当前无网络，请管理员添加。");
 					}
-				}else if(OldZoomLevel<18&&currentLevel>17&&currentLevel<19)//放大地图至节点
+				}
+			if(true)//放大地图至节点
 				{
 					for(var i in node)
 					showNode(node,i);
 			
-					OldZoomLevel = currentLevel;
-				}else if(OldZoomLevel<19&&currentLevel==19)//放大地图至传感器
-				{
 					OldZoomLevel = currentLevel;
 				}
 			}else//地图缩小
@@ -303,7 +302,7 @@ function updateGridData(str) {//str为传入的单个网络/子网/节点,暂时
 								if(str.subnet!=null)         //存在子网则在地图显示子网
 								{
 								for(var i in str.subnet)
-								ShowSubNets(str);//
+								ShowSubNet(str);//
 								}
 							GridNet(str);	
 						
@@ -365,14 +364,13 @@ function updateGridData(str) {//str为传入的单个网络/子网/节点,暂时
 			if(node.SENSORSIZE==null)  
 				size='0';
 			else
-			gridHandle.setTitle("子网信息");
+			gridHandle.setTitle("节点信息");
 								gridHandle.setSource({
 								"节点ID" : node.NDPHDR[0]+"号节点",	
 								"节点描述" : node.NDDSPT[0],
-								"节点功率":node.TRSMTPWR[0],
+								"节点功率":node.TRSMTPWR[0]+" Db",
 								"经纬度" : node.LCTN_X[0] + ","
-										+ node.LCTN_Y[0],								
-								"传感器数量" : node.SENSORSIZE[0]
+										+ node.LCTN_Y[0]
 		
 	});
 	}
@@ -437,14 +435,16 @@ function updateGridData(str) {//str为传入的单个网络/子网/节点,暂时
 			title:"       子网基本信息",
 		
 			};
+			var nodeSize=0;
+			if(!net[netIndex].SUBNET[index].NODESIZE){nodeSize=0;}else{nodeSize=net[netIndex].SUBNET[index].NODESIZE[0];}
 			var info = new BMap.InfoWindow("子网ID:  "+net[netIndex].SUBNET[index].SBNTID[0]+"<br>"+"子网名称："+net[netIndex].SUBNET[index].NTNM[0]+"<br>"+
-			"节点数量："+net[netIndex].SUBNET[index].childNodes.length+"<br>"+"子网描述："+net[netIndex].SUBNET[index].DSPT[0]+"<br>"+"经纬度:"+net[netIndex].SUBNET[index].CVRG_LB_X[0]+","+net[netIndex].SUBNET[index].CVRG_LB_Y[0],opts);
+			"节点数量："+nodeSize+"<br>"+"子网描述："+net[netIndex].SUBNET[index].DSPT[0]+"<br>"+"经纬度:"+net[netIndex].SUBNET[index].CVRG_LB_X[0]+","+net[netIndex].SUBNET[index].CVRG_LB_Y[0],opts);
 			if(17!=Map.getZoom())
 			Map.setZoom(17);
 			
 			location= new BMap.Point(net[netIndex].SUBNET[index].CVRG_LB_Y,net[netIndex].SUBNET[index].CVRG_LB_X);
 			Map.panTo(location);
-			Map.openInfoWindow(netInfo(depth),location);
+			Map.openInfoWindow(info,location);
 			GridSubnet(net[netIndex].SUBNET[index]);
 			//setTimeout(function(){Map.closeInfoWindow(info,location)},3000);	
 			break;
@@ -453,7 +453,8 @@ function updateGridData(str) {//str为传入的单个网络/子网/节点,暂时
 				Map.setZoom(18);
 			 netIndex=rcd.parentNode.parentNode.data.index;
 			 subIndex=rcd.parentNode.data.index;
-				Map.openInfoWindow(netInfo(depth),location);
+				Map.openInfoWindow(info,location);
+				
 			location= new BMap.Point(net[netIndex].SUBNET[subIndex].NODE[index].LCTN_Y,net[netIndex].SUBNET[subIndex].NODE[index].LCTN_X);
 			Map.panTo(location);
 			GridNode(net[netIndex].SUBNET[subIndex].NODE[index]);

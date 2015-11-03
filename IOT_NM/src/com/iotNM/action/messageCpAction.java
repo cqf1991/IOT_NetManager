@@ -60,13 +60,15 @@ public class messageCpAction extends ActionSupport {
 			public void run() {
 				try {
 					server = new ServerSocket(socketPort);
+					socket = server.accept();
 				} catch (Exception e) {
 					System.out.println("Error1:" + e);
+					
 				}
 				try {
 					while (true) {
 						System.out.println("Listening");
-						socket = server.accept();
+						
 						
 						InputStream is = null;
 						try {

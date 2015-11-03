@@ -62,7 +62,7 @@ public class regAction extends ActionSupport {
 
 	}
 	public void subNetReg() {
-		SUBNET asubnetReg=new SUBNET(Integer.parseInt(wlmc),zwbh,zwmc,zwms,zwdz,gzxd,gzzq,jrfs,bz,fgfwzsjd,fgfwzxjd,fgfwysjd,fgfwyxjd,49);
+		SUBNET asubnetReg=new SUBNET(Integer.parseInt(wlmc),zwbh,zwmc,zwms,zwdz,gzxd,gzzq,jrfs,bz,fgfwzsjd,fgfwysjd,fgfwzxjd,fgfwyxjd,49);
 		new Client().sendMsg(3, asubnetReg);
 		Struts2Utils.renderText("{success:true}");
 

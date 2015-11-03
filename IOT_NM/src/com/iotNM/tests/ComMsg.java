@@ -13,7 +13,6 @@ import java.util.List;
  * @ClassName: ComMsg 
  * @Description: �������ʽ ���°棩
  * @author ����	cqf1324@vip.qq.com
- * @date 2015-1-20 ����9:37:28
  */
 public class ComMsg {
 	String DataPackageName;

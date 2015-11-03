@@ -109,11 +109,7 @@ function ZhuCe()//注册功能
                     				success:function(form, action){
                     				console.log(action);
                     				alert("网络注册成功");
-                    				Ext.getCmp('netReg').getForm().reset();
-                    				//loadDIR();
-                    				//initMap(Nets);
-                    				loadCombo();
-                    				
+                    				Ext.getCmp('netReg').getForm().reset();                                  				
                     				},
                     				failure:function(form,action){
                     				console.log(action);
@@ -507,6 +503,7 @@ function loadCombo()
 	 	        jsonString = Ext.JSON.decode(response.responseText);
 	 	        mapRequest();
 	 	        Combostore();
+	 	        
 	 	        }
 	 });
 	 

@@ -22,14 +22,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>
 <script type="text/javascript" src="./js/IOTNM_JS/Commands.js" charset="GB2312"></script>
 <script type="text/javascript" src="./js/IOTNM_JS/Register.js" charset="GB2312"></script>
-<script type="text/javascript" src="./js/IOTNM_JS/BDMap.js" charset="GB2312"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xa6IlSTZtjDqZ8MKw3AU2lN5" ></script>
 <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
 <script type="text/javascript" src="./js/IOTNM_JS/Hashtable.js"></script>
 <script type="text/javascript" src="./js/IOTNM_JS/Vtype.js" charset="GB2312"></script><!--注册验证  -->
-
+<script type="text/javascript" src="./js/IOTNM_JS/SouthGridDatas.js" charset="GB2312"></script>
+<script type="text/javascript" src="./js/IOTNM_JS/linkQualityPrecision.js" charset="GB2312"></script>
 <script type="text/javascript" src="./js/IOTNM_JS/Map.js" charset="GB2312"></script>
-
+<script type="text/javascript" src="./js/IOTNM_JS/jquery-1.8.3.min.js" charset="GB2312"></script>
+<script type="text/javascript" src="./js/IOTNM_JS/highcharts.js" charset="GB2312"></script>
 
 <script type="text/javascript" src="./js/IOTNM_JS/include-ext.js"></script>
 
@@ -67,9 +68,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function onPageLoad(){
 		loadDIR();
 		initMap(Nets); 
+		setTimeout(dataProvide,5000)
+		//dataProvide();
 		//messagePush.messageCP(4031);
 	  	
 	  }
+	  
 function loadDIR(){
 	  Ext.Ajax.request({
 	 	    url: 'dirService.action',
@@ -290,6 +294,10 @@ function mapRequest(){
                    text: '系统设置',
                    id: 'systemSet',
                    handler: onItemClick
+               },{
+                   text: '链路质量评估预测',
+                   id: 'linkQuality',
+                   handler: onItemClick
                }
             ]
         });
@@ -301,6 +309,10 @@ function mapRequest(){
             if(item.id == "SBSCRB")
             {
             	ZhuCe();
+            }
+            else if(item.id == "linkQuality")
+            {
+            	LQ_precision();//in linkQualityPrecision.js
             }
             else if(item.id == "systemSet")
             {
@@ -368,18 +380,18 @@ function mapRequest(){
                 items:[
 				{                                      											      
                 	xtype:"label",
-                	text:'用户:'
+                	text:'用户:admin'
                  },
                  '-',
                  {
                  xtype:"label",
-                 text:'身份:'
+                 text:'身份:admin'
            		
                  },
                  '-',
                  {
                  xtype:"label",
-                 text:'日期:'
+                 text:'日期:'+(new Date()).toLocaleString()
                  
                  } 
                  ,
@@ -388,7 +400,7 @@ function mapRequest(){
                  text:'注销',
                  renderTo: Ext.getBody(),
                  handler:function() {         	
-				if(confirm("确定要注销？")){ return window.location.href="denglu.jsp";}
+				if(confirm("确定要注销？")){ return window.location.href="login.jsp";}
 				} 
                  }
                  ,'->',{
@@ -416,8 +428,7 @@ function mapRequest(){
               	        {
               	            text: '网络',
               	            sortable: false,
-              	            //hideable: false,
-              	            hidden: true,
+              	            hideable: false,
               	            dataIndex: 'Net'
               	        },
               	        {
@@ -450,6 +461,7 @@ function mapRequest(){
               	        {
               	            text: '消息序列',
               	            sortable: false,
+              	             hidden: true,
               	            dataIndex: 'MsgSequence'
               	        },
               	        {
@@ -486,7 +498,7 @@ function mapRequest(){
               	        }
               	    ],
               	    viewConfig:{getRowClass : function(record,rowIndex,rowParams,store){ 
-                        if(alerm && record.data.Voltage=="2.5V"){
+                        if(alerm && parseFloat(record.data.Voltage)<3.25){
                             //alert(""+record.data.Node+"号节点电压值过低！\n电压值为："+record.data.Voltage);
                             Ext.Msg.alert('低电量警告！', ""+record.data.Node+"号节点电压值过低！\n电压值为："+record.data.Voltage);
                             return '.x-grid3-row-alt';
@@ -575,7 +587,7 @@ function mapRequest(){
         <p>Hi. I'm the west panel.</p>
     </div>
     <div id="center1" class="x-hide-display">
-   		 <iframe src="Reg.jsp" width="100%" height="100%"> </iframe>
+   		
     </div>
     <%--
     <div id="center5" class="x-hide-display">
@@ -588,7 +600,18 @@ function mapRequest(){
     --%>
     <div id="center2" class="x-hide-display">
     </div>
-    
+    <div id="center3" class="x-hide-display">
+    </div>
+     <div id="center4" class="x-hide-display" style="width:700px;height:300px;">
+    </div>
+     <div id="center5" class="x-hide-display" style="width:700px;height:300px;">
+    </div>
+    <div id="RSSI_P" class="x-hide-display" style="width:700px;height:300px;">
+    </div>
+      <div id="LQI_P" class="x-hide-display" style="width:700px;height:300px;">
+    </div>
+      <div id="SNR_P" class="x-hide-display" style="width:700px;height:300px;">
+    </div>
     <div id="props-panel" class="x-hide-display" style="width:200px;height:200px;overflow:hidden;">
     </div>
     

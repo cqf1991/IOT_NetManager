@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.interceptor.MethodFilterInterceptor;
 
 /**
  * 登录验证拦截器.
- * @author 尔演&Eryan eryanwcp@gmail.com
+ * 
  */
 @SuppressWarnings("serial")
 public class AuthorityInterceptor extends MethodFilterInterceptor{

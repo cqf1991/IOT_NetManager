@@ -4,8 +4,8 @@ package com.iotNM.exception;
  * 基本异常, 继承自RuntimeException.
  * <br>从由Spring管理事务的函数中抛出时会触发事务回滚.
  * 
- * @author 尔演&Eryan eryanwcp@gmail.com
- * @date 2013-43-10 上午12:08:55
+ * 
+
  */
 @SuppressWarnings("serial")
 public class BaseException extends RuntimeException {
